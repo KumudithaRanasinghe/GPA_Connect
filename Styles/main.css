@@ -1,0 +1,47 @@
+/* Import Poppins font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+/* Define global variables */
+:root {
+  --primary-color: #00a3ff;
+  --secondary-color: #f39c12;
+  --text-primary-color: #333333;
+  --text-secondary-color: #ffffff;
+  --text-light-color: #fafdff;
+  --bg-light-color: #fafafa;
+  --shadow-dark: rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: Poppins, sans-serif;
+}
+
+/* Remove underlines from links */
+a {
+  text-decoration: none;
+  
+}
+
+/* Primary button styles */
+.btn-primary {
+    border: none;
+    outline: none;
+    padding: 0.5rem 0.8rem;
+    border-radius: 0.4rem;
+    color: var(--text-light-color);
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+  
+.btn-primary:active {
+    transform: scale(0.98);
+}
