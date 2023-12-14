@@ -14,7 +14,7 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-
+/* Nav bar start */
 .logo {
   color: var(--text-primary-color);
   font-weight: bold;
@@ -29,13 +29,16 @@ nav ul {
 }
 
 nav li {
-  margin-right: 20px;
+  margin-right: 100px;
 }
 
 nav a {
   text-decoration: none;
   color: #333333;
   position: relative;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
 }
 
 nav a.active {
@@ -45,13 +48,84 @@ nav a.active {
 nav a:after {
   content: '';
   display: block;
-  height: 2px;
+  height: 3px;
   width: 0;
   background: transparent;
   transition: width 0.3s ease, background-color 0.3s ease;
+}
+.logo img {
+  width: auto; /* Adjust the width as needed */
+  height: 100px; /* Maintain aspect ratio */
 }
 
 nav a:hover:after {
   width: 100%;
   background: #F39C12;
+}
+
+/* Nav bar End */
+
+
+/* Header section Start */
+.centered-text {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.centered-text p {
+  color:var(--primary-color);
+  font-size: 36px;
+  /* Additional styles for the text if needed */
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+
+}
+/* Header section End */
+
+/* Table section Start */
+.container {
+  width: 50%;
+  margin: 50px auto;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  background-color: #eef9ff;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid yellow;
+  padding: 8px; /* Adjusted padding */
+  text-align: center;
+}
+
+th {
+  background-color: #00a3ff;
+  color: white;
+}
+
+.gpa {
+  background-color: blue;
+  color: white;
+  border-radius: 50px;
+}
+
+.add-course, .semester-gpa {
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+input {
+  width: 100%;
+  padding: 5px;
+  margin: 0;
+  border: none;
+  outline: none;
+  background-color: #f2f2f2; /* Optional background color for better visibility */
 }
