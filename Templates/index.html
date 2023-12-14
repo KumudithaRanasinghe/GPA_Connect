@@ -11,11 +11,16 @@
           rel="stylesheet" 
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
           crossorigin="anonymous">
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <title>NSBM</title>
 </head>
 <body>
     <header>
-        <div class="logo">Your Logo</div>
+        <div class="logo">
+            <img src="/Assets/Images/logo.png" alt="NSBM Logo">
+        </div>
         <nav>
           <ul>
             <li><a href="#" class="active">Home</a></li>
@@ -24,6 +29,54 @@
           </ul>
         </nav>
       </header>
+
+
+      <div class="centered-text">
+        <p>Calculate Your GPA </p>
+    </div>
+
+
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Grade</th>
+                    <th>Credits</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="courseName[]" placeholder="Enter course name"></td>
+                    <td><input type="text" name="grade[]" placeholder="Enter grade"></td>
+                    <td><input type="text" name="credits[]" placeholder="Enter credits"></td>
+                    <td><button type="button" onclick="removeRow(this)">Remove</button></td>
+                </tr>
+                
+                <tr>
+                    <td>SE</td>
+                    <td>B</td>
+                    <td>2</td>
+                    <td>X</td>
+                </tr>
+                <tr>
+                    <td>OS</td>
+                    <td>B+</td>
+                    <td>2</td>
+                    <td>X</td>
+                </tr>
+                <tr>
+                    <td colspan="3">Semester 1 GPA:</td>
+                    <td class="gpa">1.00</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="add-course">Add Course</button>
+        <button class="semester-gpa">Semester GPA</button>
+    </div>
+
+
 
 
 
