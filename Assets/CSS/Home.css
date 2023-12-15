@@ -4,30 +4,44 @@ body {
 }
 @import url(main.css);
 
-
-
-
-header {
-  background-color: #f2f2f2;
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* Header section Start */
+.centered-text {
+  text-align: center;
+  margin-top: 3rem;
 }
+
+.centered-text p {
+  color:var(--primary-color);
+  font-size: 36px;
+  /* Additional styles for the text if needed */
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+
+}
+ Development
 /* Nav bar start */
 .logo {
   color: var(--text-primary-color);
   font-weight: bold;
   font-size: 18px;
+
+/* Header section End */
+
+/* Table section Start */
+.container {
+  width: 50%;
+  margin: 50px auto;
+ development
 }
 
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
+.table {
+  width: 100%;
+  max-width: 100%;
+  background-color: #eef9ff;
+  border-collapse: collapse;
 }
 
+ Development
 nav li {
   margin-right: 100px;
 }
@@ -39,12 +53,26 @@ nav a {
   font-size: 18px;
   font-weight: 500;
   font-family: 'Poppins', sans-serif;
+
+th, td {
+  border: 1px solid yellow;
+  padding: 8px; /* Adjusted padding */
+  text-align: center;
 }
 
-nav a.active {
-  color: #F39C12;
+th {
+  background-color: #00a3ff;
+  color: white;
+ development
 }
 
+.gpa {
+  background-color: blue;
+  color: white;
+  border-radius: 50px;
+}
+
+ Development
 nav a:after {
   content: '';
   display: block;
@@ -59,8 +87,24 @@ nav a:after {
 }
 
 nav a:hover:after {
+
+.add-course, .semester-gpa {
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+input {
+ development
   width: 100%;
-  background: #F39C12;
+  padding: 5px;
+  margin: 0;
+  border: none;
+  outline: none;
+  background-color: #f2f2f2; /* Optional background color for better visibility */
 }
 
 /* Nav bar End */
