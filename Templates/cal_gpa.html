@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Assets/CSS/main.css">
     <link rel="stylesheet" href="/Assets/CSS/Home.css">
+    <link rel="stylesheet" href="/Assets/CSS/cal_gpa.css">
+
     <!-- Bootstrap CSS - CDN -->
     <link
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
           rel="stylesheet" 
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
           crossorigin="anonymous">
+
+
+
     <title>NSBM</title>
 </head>
 <body>
@@ -66,9 +71,12 @@
           </nav>
     </header>
     <!-- nav bar end -->
+
+
+
     <!-- hero section start -->
 
-
+<!--  header -->
  <header>
         <h1 class="main-heading">Calculate Your GPA</h1>
         <h3 class="sub-heading">
@@ -87,6 +95,569 @@
     </header>
 
 
+<!--  header end -->
+
+
+<!--  table start-->
+<section>
+  <div class="grid">
+    <div class="g-col-6">
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                  <span class="sem_no" id="sem_no" >Sememster 1 </span>
+                    <tr>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+
+                        <!--Raw start  -->
+                        <td>
+                          Course
+                        </td>
+                       
+                         
+                      </td> 
+                       <td> <span class="selected-course">Grade</span>
+                        <select>
+                            <option value="course1">A+</option>
+                            <option value="course2">A</option>
+                            <option value="course3">A-</option>
+                            <option value="course4">B+</option>
+                            <option value="course5">B</option>
+                            <option value="course6">B-</option>
+                            <option value="course7">C+</option>
+                            <option value="course8">C</option>
+                            <option value="course9">C-</option>
+                            <option value="course10">D+</option>
+                            <option value="course11">D</option>
+                            <option value="course12">D-</option>
+
+
+
+
+                        </select></td>
+                        <td>
+                          <input type="text" id="creditInput" name="credit" 
+                          placeholder="Credit" required>
+                        </td>
+
+                        <td>
+                          <button class="delete_course_btn">  
+                            <img src="/Assets/Images/delete.png" alt="plus" class="plus">
+                          </button>
+                        </td>
+
+                        <!-- raw end -->
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+
+                      <!--Raw start  -->
+                      <td>
+                        Course
+                      </td>
+                     
+                       
+                    </td> 
+                     <td> <span class="selected-course">Grade</span>
+                      <select>
+                          <option value="course1">A+</option>
+                          <option value="course2">A</option>
+                          <option value="course3">A-</option>
+                          <option value="course4">B+</option>
+                          <option value="course5">B</option>
+                          <option value="course6">B-</option>
+                          <option value="course7">C+</option>
+                          <option value="course8">C</option>
+                          <option value="course9">C-</option>
+                          <option value="course10">D+</option>
+                          <option value="course11">D</option>
+                          <option value="course12">D-</option>
+
+
+
+
+                      </select></td>
+                      <td>
+                        <input type="text" id="creditInput" name="credit" 
+                        placeholder="Credit" required>
+                      </td>
+
+                      <td>
+                        <button class="delete_course_btn">  
+                          <img src="/Assets/Images/delete.png" alt="plus" class="plus">
+                        </button>
+                      </td>
+
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+
+                      <!--Raw start  -->
+                      <td>
+                        Course
+                      </td>
+                     
+                       
+                    </td> 
+                     <td> <span class="selected-course">Grade</span>
+                      <select>
+                          <option value="course1">A+</option>
+                          <option value="course2">A</option>
+                          <option value="course3">A-</option>
+                          <option value="course4">B+</option>
+                          <option value="course5">B</option>
+                          <option value="course6">B-</option>
+                          <option value="course7">C+</option>
+                          <option value="course8">C</option>
+                          <option value="course9">C-</option>
+                          <option value="course10">D+</option>
+                          <option value="course11">D</option>
+                          <option value="course12">D-</option>
+
+
+
+
+                      </select></td>
+                      <td>
+                        <input type="text" id="creditInput" name="credit" 
+                        placeholder="Credit" required>
+                      </td>
+
+                      <td>
+                        <button class="delete_course_btn">  
+                          <img src="/Assets/Images/delete.png" alt="plus" class="plus">
+                        </button>
+                      </td>
+
+                    </tr>
+                    
+                </tbody>
+                
+            </table>
+            <div class="add_course">
+              <button class="add_course_btn">  
+                <img src="/Assets/Images/add_icon.png" alt="plus" class="plus">
+
+                
+                Add Course
+              </button>
+            </div>
+
+            <!-- Sem GPA cal  -->
+
+            <div class="sem_cal">
+              <button class="sem_cal_btn">  
+                 Semester GPA <span class="sem_gpa"> 3.5</span>
+              </button>
+
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
+</div>
+
+
+
+
+
+
+
+<!--  table end-->
+
+<div class="cal_circle">
+  <div class="circle_inner">
+      <div class="inner_circle_img">
+          <img src="/Assets/Images/circle_inner.png" alt="cal_icon" class="cal_icon">
+          <div class="text-overlay">
+              <h3>Cumulative GPA</h3>
+              <span class="content">00.00</span>
+          </div>
+      </div>
+  </div>
+
+ 
+</div>
+
+
+<p class="paragraph">
+  Discover Jobs Aligned with Your GPA<br>
+  Start Your Career Journey Now!
+</p>
+<div class="job_explore">
+  
+  <button class="job_explore_btn">  
+    
+   <span class="txt">Explore Jobs</span> 
+</button>
+
+</div>
+
+
+
+<div class="grid">
+  <div class="g-col-6">
+      <div class="table-container">
+          <table class="table">
+              <thead>
+                <span class="sem_no" id="sem_no" >Sememster 1 </span>
+                  <tr>
+                      
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <th scope="row">1</th>
+
+                      <!--Raw start  -->
+                      <td>
+                        Course
+                      </td>
+                     
+                       
+                    </td> 
+                     <td> <span class="selected-course">Grade</span>
+                      <select>
+                          <option value="course1">A+</option>
+                          <option value="course2">A</option>
+                          <option value="course3">A-</option>
+                          <option value="course4">B+</option>
+                          <option value="course5">B</option>
+                          <option value="course6">B-</option>
+                          <option value="course7">C+</option>
+                          <option value="course8">C</option>
+                          <option value="course9">C-</option>
+                          <option value="course10">D+</option>
+                          <option value="course11">D</option>
+                          <option value="course12">D-</option>
+
+
+
+
+                      </select></td>
+                      <td>
+                        <input type="text" id="creditInput" name="credit" 
+                        placeholder="Credit" required>
+                      </td>
+
+                      <td>
+                        <button class="delete_course_btn">  
+                          <img src="/Assets/Images/delete.png" alt="plus" class="plus">
+                        </button>
+                      </td>
+
+                      <!-- raw end -->
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+
+                    <!--Raw start  -->
+                    <td>
+                      Course
+                    </td>
+                   
+                     
+                  </td> 
+                   <td> <span class="selected-course">Grade</span>
+                    <select>
+                        <option value="course1">A+</option>
+                        <option value="course2">A</option>
+                        <option value="course3">A-</option>
+                        <option value="course4">B+</option>
+                        <option value="course5">B</option>
+                        <option value="course6">B-</option>
+                        <option value="course7">C+</option>
+                        <option value="course8">C</option>
+                        <option value="course9">C-</option>
+                        <option value="course10">D+</option>
+                        <option value="course11">D</option>
+                        <option value="course12">D-</option>
+
+
+
+
+                    </select></td>
+                    <td>
+                      <input type="text" id="creditInput" name="credit" 
+                      placeholder="Credit" required>
+                    </td>
+
+                    <td>
+                      <button class="delete_course_btn">  
+                        <img src="/Assets/Images/delete.png" alt="plus" class="plus">
+                      </button>
+                    </td>
+
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+
+                    <!--Raw start  -->
+                    <td>
+                      Course
+                    </td>
+                   
+                     
+                  </td> 
+                   <td> <span class="selected-course">Grade</span>
+                    <select>
+                        <option value="course1">A+</option>
+                        <option value="course2">A</option>
+                        <option value="course3">A-</option>
+                        <option value="course4">B+</option>
+                        <option value="course5">B</option>
+                        <option value="course6">B-</option>
+                        <option value="course7">C+</option>
+                        <option value="course8">C</option>
+                        <option value="course9">C-</option>
+                        <option value="course10">D+</option>
+                        <option value="course11">D</option>
+                        <option value="course12">D-</option>
+
+
+
+
+                    </select></td>
+                    <td>
+                      <input type="text" id="creditInput" name="credit" 
+                      placeholder="Credit" required>
+                    </td>
+
+                    <td>
+                      <button class="delete_course_btn">  
+                        <img src="/Assets/Images/delete.png" alt="plus" class="plus">
+                      </button>
+                    </td>
+
+                  </tr>
+                  
+              </tbody>
+              
+          </table>
+          <div class="add_course">
+            <button class="add_course_btn">  
+              <img src="/Assets/Images/add_icon.png" alt="plus" class="plus">
+
+              
+              Add Course
+            </button>
+          </div>
+
+          <!-- Sem GPA cal  -->
+
+          <div class="sem_cal">
+            <button class="sem_cal_btn">  
+               Semester GPA <span class="sem_gpa"> 3.5</span>
+            </button>
+
+          </div>
+      </div>
+  </div>
+
+  
+
+
+
+</div>
+
+
+<div class="grid">
+  <div class="g-col-6">
+      <div class="table-container">
+          <table class="table">
+              <thead>
+                <span class="sem_no" id="sem_no" >Sememster 1 </span>
+                  <tr>
+                      
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <th scope="row">1</th>
+
+                      <!--Raw start  -->
+                      <td>
+                        Course
+                      </td>
+                     
+                       
+                    </td> 
+                     <td> <span class="selected-course">Grade</span>
+                      <select>
+                          <option value="course1">A+</option>
+                          <option value="course2">A</option>
+                          <option value="course3">A-</option>
+                          <option value="course4">B+</option>
+                          <option value="course5">B</option>
+                          <option value="course6">B-</option>
+                          <option value="course7">C+</option>
+                          <option value="course8">C</option>
+                          <option value="course9">C-</option>
+                          <option value="course10">D+</option>
+                          <option value="course11">D</option>
+                          <option value="course12">D-</option>
+
+
+
+
+                      </select></td>
+                      <td>
+                        <input type="text" id="creditInput" name="credit" 
+                        placeholder="Credit" required>
+                      </td>
+
+                      <td>
+                        <button class="delete_course_btn">  
+                          <img src="/Assets/Images/delete.png" alt="plus" class="plus">
+                        </button>
+                      </td>
+
+                      <!-- raw end -->
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+
+                    <!--Raw start  -->
+                    <td>
+                      Course
+                    </td>
+                   
+                     
+                  </td> 
+                   <td> <span class="selected-course">Grade</span>
+                    <select>
+                        <option value="course1">A+</option>
+                        <option value="course2">A</option>
+                        <option value="course3">A-</option>
+                        <option value="course4">B+</option>
+                        <option value="course5">B</option>
+                        <option value="course6">B-</option>
+                        <option value="course7">C+</option>
+                        <option value="course8">C</option>
+                        <option value="course9">C-</option>
+                        <option value="course10">D+</option>
+                        <option value="course11">D</option>
+                        <option value="course12">D-</option>
+
+
+
+
+                    </select></td>
+                    <td>
+                      <input type="text" id="creditInput" name="credit" 
+                      placeholder="Credit" required>
+                    </td>
+
+                    <td>
+                      <button class="delete_course_btn">  
+                        <img src="/Assets/Images/delete.png" alt="plus" class="plus">
+                      </button>
+                    </td>
+
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+
+                    <!--Raw start  -->
+                    <td>
+                      Course
+                    </td>
+                   
+                     
+                  </td> 
+                   <td> <span class="selected-course">Grade</span>
+                    <select>
+                        <option value="course1">A+</option>
+                        <option value="course2">A</option>
+                        <option value="course3">A-</option>
+                        <option value="course4">B+</option>
+                        <option value="course5">B</option>
+                        <option value="course6">B-</option>
+                        <option value="course7">C+</option>
+                        <option value="course8">C</option>
+                        <option value="course9">C-</option>
+                        <option value="course10">D+</option>
+                        <option value="course11">D</option>
+                        <option value="course12">D-</option>
+
+
+
+
+                    </select></td>
+                    <td>
+                      <input type="text" id="creditInput" name="credit" 
+                      placeholder="Credit" required>
+                    </td>
+
+                    <td>
+                      <button class="delete_course_btn">  
+                        <img src="/Assets/Images/delete.png" alt="plus" class="plus">
+                      </button>
+                    </td>
+
+                  </tr>
+                  
+              </tbody>
+              
+          </table>
+          <div class="add_course">
+            <button class="add_course_btn">  
+              <img src="/Assets/Images/add_icon.png" alt="plus" class="plus">
+
+              
+              Add Course
+            </button>
+          </div>
+
+
+
+
+
+
+          
+          <!-- Sem GPA cal  -->
+
+          <div class="sem_cal">
+            <button class="sem_cal_btn">  
+               Semester GPA <span class="sem_gpa"> 3.5</span>
+            </button>
+
+          </div>
+      </div>
+  </div>
+
+  
+
+
+
+</div>
+
+
+
+
+
+</section>
+<!-- add sememster button -->
+<div class="add_sem">
+  <button class="add_sem_btn">  
+    <img src="/Assets/Images/post.png" alt="plus" class="plus">
+
+    
+    Add Semester
+  </button>
+</div>
+
+
+
+ 
 
 
 
@@ -99,48 +670,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- hero section end -->
     <!-- footer start -->
     <footer id="bottom" class="w-100">
         <div class="footer">

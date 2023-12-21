@@ -12,6 +12,8 @@
   --text-light-color: #fafdff;
   --bg-light-color: #fafafa;
   --shadow-dark: rgba(0, 0, 0, 0.1);
+  --table-back:rgba(157, 213, 245, 0.2);
+  --btn_back: rgba(0, 163, 255, 0.4);
 }
 
 * {
