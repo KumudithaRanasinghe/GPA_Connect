@@ -1,0 +1,232 @@
+@import url("main.css");
+
+
+
+* {
+  margin: 0px 0 0 0 ;
+  padding: 0;
+  margin-bottom: 0px;
+}
+
+/* table style start */
+
+/* Add  styling here */
+
+.grid{
+ float: left;
+  width: 70%;
+  margin-top: 50px ;
+  margin-bottom: 50px;
+ 
+  
+
+}
+
+.g-col-6{
+  
+  padding: 2%;
+  
+
+}
+
+.table-container {
+  border-radius: 50px;
+  overflow: hidden;
+  background-color: var(--table-back);
+  margin: 20px;
+  padding: 50px;
+  width: 70%;
+  margin: 0 auto; 
+  text-align: left;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+
+  
+}
+
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  color: white; /* Text color for contrast */
+}
+
+.table-light-blue tr {
+  background-color: lightblue;
+  color: white; /* Text color for contrast */
+}
+.table th,
+.table td {
+  padding: 10px;
+  border: 2px solid var(--secondary-color); /* Border color for each cell */
+  text-align: left;
+}
+
+.table th {
+  background-color: yellow; /* Background color for header cells */
+}
+
+
+
+
+
+
+
+
+
+/* Input styles */
+input {
+  width: 50%;
+  padding: 2px;
+}
+
+/* Add course button style */
+.add_course_btn {
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  color: inherit; /* Use the color of the parent element */
+  cursor: pointer; /* Show pointer cursor on hover for better user experience */
+}
+
+
+/* Add sem_cal style */
+
+.sem_cal_btn {
+  text-decoration: none;
+  background-color: var(--btn_back);
+  border-radius: 50px;
+  border-style: none;
+  padding: 1.5%;
+  color: inherit; /* Use the color of the parent element */
+  cursor: pointer; /* Show pointer cursor on hover for better user experience */
+  float: right;
+}
+
+
+/* Delete btn style */
+
+.delete_course_btn{
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  color: inherit; /* Use the color of the parent element */
+  cursor: pointer; /* Show pointer cursor on hover for better user experience */
+  float: right;
+}
+
+
+/* calculate circle  style  */
+.cal_circle {
+  position: relative;
+  width: 350px; /* Adjust the width and height as needed */
+  height: 350px;
+  border-radius: 50%;
+  background-color: #FBF8F8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.4);
+}
+
+.circle_inner {
+  position: relative;
+  width: 80%; /* Adjust the size of the inner circle as needed */
+  height: 80%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.inner_circle_img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cal_icon {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+
+.content {
+  font-family: "Popins", sans-serif;
+  font-size:40px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  align-items: center;
+ ;
+
+}
+
+.text-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+h3 {
+  margin: 5px 0;
+  font-family: 'Prata', serif;
+  font-size: 18px;
+  color: rgb(197, 89, 18);
+}
+
+.job_explore {
+  text-align: center;
+  margin-top: 20px; /* Adjust margin as needed */
+}
+
+.job_explore_btn {
+  border: none;
+  border-radius: 50px; /* Adjust the border-radius as needed */
+  background-color: var(--secondary-color);
+  padding: 10px 20px; /* Adjust padding as needed */
+  cursor: pointer;
+  margin-right: 100px;
+  font-family: "Popins", sans-serif;
+}
+
+.txt {
+  color: black;
+  font-weight: bold;
+}
+
+.paragraph {
+  text-align: center;
+  margin-top: 20px; /* Adjust margin as needed */
+  font-family: Arial, sans-serif;
+  font-size: 16px; /* Adjust font size as needed */
+  color: #333; /* Adjust text color as needed */
+  margin-right: 100px;
+
+}
+
+
+/* Add sem style */
+
+.add_sem{
+  position: relative;
+padding: 0px 0px 100px 100px;
+
+
+  
+}
+
+.add_sem_btn{
+  border-radius: 50px;
+overflow: hidden;
+padding: 1.5%;
+border: 2px solid var(--secondary-color);
+background-color: rgba(0, 163, 255, 0.2);
+}

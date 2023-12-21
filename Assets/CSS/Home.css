@@ -1,69 +1,50 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
+@import url("main.css");
+
+
+
+
+header {
+ margin-top: 0px;
 }
-@import url(main.css);
+/* hero section styles start */
+/* Add  styling here */
+.main-heading {
+  color: var(--primary-color); /* Adjust the color as needed */
+   font-family: "Poppins", sans-serif;
+   font-weight: bolder;
+   text-align: center;
+   position: relative;
+   margin-top: 100px;
 
-/* Header section Start */
-.centered-text {
-  text-align: center;
-  margin-top: 3rem;
-}
-
-.centered-text p {
-  color:var(--primary-color);
-  font-size: 36px;
-  /* Additional styles for the text if needed */
-  font-family: "Poppins", sans-serif;
-  font-weight: 900;
-
-}
-/* Header section End */
-
-/* Table section Start */
-.container {
-  width: 50%;
-  margin: 50px auto;
 }
 
-.table {
-  width: 100%;
-  max-width: 100%;
-  background-color: #eef9ff;
-  border-collapse: collapse;
+.sub-heading {
+  color: var(--text-primary-color); /* Adjust the color as needed */
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+   text-align: center;
+    font-size: 16px;
+    
+}
+.sub-heading .style_1 {
+  font-size: 20px;
+  font-weight: 600;
+
 }
 
-th, td {
-  border: 1px solid yellow;
-  padding: 8px; /* Adjusted padding */
-  text-align: center;
+.sub-heading .style_2 {
+  color: var(--primary-color); /* Adjust the color as needed */
+  font-size: 20px;
+  font-weight: 600;
+
+}
+.sub-heading .style_3 {
+  font-size: 12px;
+  font-weight: 300;
+
 }
 
-th {
-  background-color: #00a3ff;
-  color: white;
-}
 
-.gpa {
-  background-color: blue;
-  color: white;
-  border-radius: 50px;
-}
 
-.add-course, .semester-gpa {
-  background-color: blue;
-  color: white;
-  padding: 10px 20px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-}
-input {
-  width: 100%;
-  padding: 5px;
-  margin: 0;
-  border: none;
-  outline: none;
-  background-color: #f2f2f2; /* Optional background color for better visibility */
-}
+
+/* hero section styles end */
