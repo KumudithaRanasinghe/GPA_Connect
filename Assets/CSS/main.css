@@ -1,6 +1,8 @@
 /* Import Poppins font */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
+
+
 /* Define global variables */
 :root {
   --primary-color: #00a3ff;
@@ -155,6 +157,10 @@ a {
 }
 
 .footer-section a {
+  color: var(--text-light-color); 
+  text-decoration: none;
+}
+.link_nsbm a {
   color: var(--text-light-color); 
   text-decoration: none;
 }
