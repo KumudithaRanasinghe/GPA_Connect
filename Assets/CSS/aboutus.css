@@ -1,0 +1,64 @@
+
+
+header {
+background-color: #333;
+color: #fff;
+text-align: center;
+padding: 10px;
+} 
+button {
+margin: 0;
+padding: 0;
+border: none;
+font-size: 1rem;
+cursor: pointer;
+}
+.my-button {
+background-color: #2b05d3; 
+color: rgb(232, 232, 232); 
+padding: 10px 20px; 
+border-radius: 5px; 
+font-weight: bold; 
+}       
+.load-font{   
+font-family: CustomFontRegular;
+margin-left: 15px;
+}     
+.card-dev{
+background-color: rgba(246, 241, 241, 0.896);
+width: 350px;
+height: 250px;
+box-shadow: 0 0 10px 0 rgba(198, 213, 231, 0.2);
+border-radius: 10px;
+padding: 5px;
+margin: 20px;
+
+}
+.row-dev{
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+}
+.column-dev{
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+}
+.curve{
+border-radius: 10px;
+transition: 200ms;
+}
+.center{
+display: flex;
+justify-content: center;
+}
+.curve:hover{
+    scale: 101%;
+}
+footer {
+text-align: center;
+padding: 10px;
+background-color: #333;
+color: #fff;
+}
+
