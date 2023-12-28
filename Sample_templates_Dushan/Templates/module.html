@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Module for that degree</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#module').change(function(){
+                var selectedValue = $('#module option:selected').text();
+                updateText(selectedValue);
+            });
+        
+            function updateText(selectedValue) {
+                $.ajax({
+                    url: "/fetch",
+                    method: "POST",
+                    data: {query: selectedValue},
+                    success: function(data) {
+                        $('#dynamicContent').html(data);
+                    }
+                });
+            }
+        });
+
+      
+        </script>
+</head>
+<body>
+
+    <h1>Select Your Module</h1>
+
+    <h2 id="dynamicContent"></h2>
+
+    <form action="/unknown" method="post">
+
+        <table>
+            <th>
+                <td><label for="module">Choose Module:</label></td>
+                <td><label for="module">Choose Grade:</label></td>
+            </th>
+            <tr>
+                <td>
+                    <select id="module" name="module">
+                        {% for module in modules %}
+                        <option value="{{ module[0] }}">{{ module[1] }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <select id="grade" name="grade">
+                        {% for grade in grades %}
+                        <option value="{{ grade[0] }}">{{ grade[1] }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>         
+        </table>
+        <br>
+        <button type="submit" >Add</button>
+
+
+    </form>
+
+</body>
+</html>

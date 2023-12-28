@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Degree Program Selection</title>
+</head>
+<body>
+
+    <h1>Select Your Degree Program</h1>
+
+    <form action="/module" method="post">
+        <label for="degree">Choose a Degree Program:</label>
+        <select id="degree" name="degree">
+            {% for program in degree_programs %}
+                <option value="{{ program[0] }}">{{ program[1] }}</option>
+            {% endfor %}
+        </select>
+        <br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>
