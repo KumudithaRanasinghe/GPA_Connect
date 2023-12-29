@@ -4,11 +4,12 @@ from logic import Logic # GPA calculation function
 import mysql.connector
 
 app = Flask(__name__)
-
+app.run(debug=True)
 db_config = { #databsse configuration
     'host': 'localhost',
+    'port': '3306',
     'user': 'root',
-    'password': '123456',
+    'password': '',
     'database': 'db_gpa_connect',
 }
 conn = mysql.connector.connect(**db_config)
@@ -25,7 +26,7 @@ def index():
     cursor.close()
     conn.close()
 
-    return render_template("index.html",degree_programs=rows)
+    return render_template("base.html",degree_programs=rows)
   
 
 @app.route('/module', methods=['GET', 'POST'])# for handle the modules select page
@@ -54,8 +55,8 @@ def module():
     grades = cursor.fetchall()
     cursor.close()
     conn.close()
-
-    return render_template("module.html",modules=modules, grades=grades) #pass the all modules and grades list to module page
+    print(modules)
+    return render_template("module1.html",modules=modules, grades=grades) #pass the all modules and grades list to module page
 
 
 

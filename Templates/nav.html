@@ -3,7 +3,7 @@
           <a class="navbar-brand" href="#"
             ><img
               class="img-logo"
-              src="/Assets/Images/Logo.png"
+              src="{{url_for('static', filename='Images/Logo.png')}}"
               alt="GPAC Logo"
           /></a>
           <button
@@ -23,15 +23,15 @@
                 <a
                   class="nav-link active"
                   aria-current="page"
-                  href="#"
+                  href="{{url_for('index')}}"
                   >Home</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">About Us</a>
+                <a class="nav-link" href="{{url_for('aboutus')}}">About Us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">FAQ</a>
+                <a class="nav-link" href="{{url_for('faq')}}">FAQ</a>
               </li>
             </ul>
             <a href="#">

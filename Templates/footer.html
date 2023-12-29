@@ -5,20 +5,20 @@
             <a class="brand-text" href="index.html"
             ><img
                 class="img-logo"
-                src="/Assets/Images/Logo.png"
+                src="{{url_for('static', filename='Images/Logo_light.png')}}"
                 alt="GPAC Logo"
             /></a>
         </div>
         <div class="footer-section flex-grow-1">
             <ul>
             <li>
-                <a href="#">Home</a>
+                <a href="{{url_for('index')}}">Home</a>
             </li>
             <li>
-                <a href="#">About Us</a>
+                <a href="{{url_for('aboutus')}}">About Us</a>
             </li>
             <li>
-                <a href="#">FAQ</a>
+                <a href="{{url_for('faq')}}">FAQ</a>
             </li>
             </ul>
         </div>

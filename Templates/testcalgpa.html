@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/cal_gpa.css') }}">
+    <!-- Bootstrap CSS - CDN -->
+    <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
+          crossorigin="anonymous">
+    <title>NSBM</title>
+    <script>
+        $(document).ready(function(){
+            $('#module').change(function(){
+                var selectedValue = $('#module option:selected').text();
+                updateText(selectedValue);
+            });
+        
+            function updateText(selectedValue) {
+                $.ajax({
+                    url: "/fetch",
+                    method: "POST",
+                    data: {query: selectedValue},
+                    success: function(data) {
+                        $('#dynamicContent').html(data);
+                    }
+                });
+            }
+        });
+</script>
+</head>
+<body>
+    <div class="main-wrapper">
+    <!-- nav bar start -->
+    <header>
+      {% include 'nav.html' %}
+    </header>
+    <!-- nav bar end -->
+    <!-- hero section start -->
+    
+      <!-- Your code Start here -->
+      {% block content %}
+
+        <!--  table start-->
+        <section>
+        <form action="/unknown" method="post">
+        <div class="grid" id="gridContainer">
+            <div class="g-col-6" >
+                <div class="table-container" >
+                    <table class="table" id="tableId" >
+                        <thead>
+                        <span class="sem_no" id="sem_no" >Sememster 1 </span>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Course</th>
+                                <th scope="col">Grade</th>
+                                <th scope="col">Credit</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+
+                                <!--Raw start  -->
+                                <td>
+                                    <select id="module" name="module">
+                                        {% for module in modules %}
+                                        <option value="{{ module[0] }}">{{ module[1] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            
+                                
+                            </td> 
+                            <td> <span class="selected-course">Grade</span>
+                                <select id="grade" name="grade">
+                                    {% for grade in grades %}
+                                    <option value="{{ grade[0] }}">{{ grade[1] }}</option>
+                                    {% endfor %}
+                                </select>
+                                </td>
+                                <td>
+                                <input type="text" id="creditInput" name="credit" 
+                                placeholder="Credit" required>
+                                </td>
+
+                                <td>
+                                <!-- <button class="delete_course_btn" onclick="deleteRow(this)">  
+                                    <img src="/Assets/Images/delete.png" alt="plus" class="plus">
+                                </button> -->
+                                </td>
+
+                                <!-- raw end -->
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+
+                                <!--Raw start  -->
+                                <td>
+                                    <select id="module" name="module">
+                                        {% for module in modules %}
+                                        <option value="{{ module[0] }}">{{ module[1] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            
+                                
+                            </td> 
+                            <td> <span class="selected-course">Grade</span>
+                                <select id="grade" name="grade">
+                                    {% for grade in grades %}
+                                    <option value="{{ grade[0] }}">{{ grade[1] }}</option>
+                                    {% endfor %}
+                                </select>
+                                </td>
+                                <td>
+                                <input type="text" id="creditInput" name="credit" 
+                                placeholder="Credit" required>
+                                </td>
+
+                                <td>
+                                <!-- <button class="delete_course_btn" onclick="deleteRow(this)">  
+                                    <img src="/Assets/Images/delete.png" alt="plus" class="plus">
+                                </button> -->
+                                </td>
+
+                                <!-- raw end -->
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+
+                                <!--Raw start  -->
+                                <td>
+                                    <select id="module" name="module">
+                                        {% for module in modules %}
+                                        <option value="{{ module[0] }}">{{ module[1] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            
+                                
+                            </td> 
+                            <td> <span class="selected-course">Grade</span>
+                                <select id="grade" name="grade">
+                                    {% for grade in grades %}
+                                    <option value="{{ grade[0] }}">{{ grade[1] }}</option>
+                                    {% endfor %}
+                                </select>
+                                </td>
+                                <td>
+                                <input type="text" id="creditInput" name="credit" 
+                                placeholder="Credit" required>
+                                </td>
+
+                                <td>
+                                <!-- <button class="delete_course_btn" onclick="deleteRow(this)">  
+                                    <img src="/Assets/Images/delete.png" alt="plus" class="plus">
+                                </button> -->
+                                </td>
+
+                                <!-- raw end -->
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+
+                                <!--Raw start  -->
+                                <td>
+                                    <select id="module" name="module">
+                                        {% for module in modules %}
+                                        <option value="{{ module[0] }}">{{ module[1] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            
+                                
+                            </td> 
+                            <td> <span class="selected-course">Grade</span>
+                                <select id="grade" name="grade">
+                                    {% for grade in grades %}
+                                    <option value="{{ grade[0] }}">{{ grade[1] }}</option>
+                                    {% endfor %}
+                                </select>
+                                </td>
+                                <td>
+                                <input type="text" id="creditInput" name="credit" 
+                                placeholder="Credit" required>
+                                </td>
+
+                                <td>
+                                <!-- <button class="delete_course_btn" onclick="deleteRow(this)">  
+                                    <img src="/Assets/Images/delete.png" alt="plus" class="plus">
+                                </button> -->
+                                </td>
+
+                                <!-- raw end -->
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+
+                                <!--Raw start  -->
+                                <td>
+                                    <select id="module" name="module">
+                                        {% for module in modules %}
+                                        <option value="{{ module[0] }}">{{ module[1] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            
+                                
+                            </td> 
+                            <td> <span class="selected-course">Grade</span>
+                                <select id="grade" name="grade">
+                                    {% for grade in grades %}
+                                    <option value="{{ grade[0] }}">{{ grade[1] }}</option>
+                                    {% endfor %}
+                                </select>
+                                </td>
+                                <td>
+                                <input type="text" id="creditInput" name="credit" 
+                                placeholder="Credit" required>
+                                </td>
+
+                                <td>
+                                <!-- <button class="delete_course_btn" onclick="deleteRow(this)">  
+                                    <img src="/Assets/Images/delete.png" alt="plus" class="plus">
+                                </button> -->
+                                </td>
+
+                                <!-- raw end -->
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+
+                                <!--Raw start  -->
+                                <td>
+                                    <select id="module" name="module">
+                                        {% for module in modules %}
+                                        <option value="{{ module[0] }}">{{ module[1] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            
+                                
+                            </td> 
+                            <td> <span class="selected-course">Grade</span>
+                                <select id="grade" name="grade">
+                                    {% for grade in grades %}
+                                    <option value="{{ grade[0] }}">{{ grade[1] }}</option>
+                                    {% endfor %}
+                                </select>
+                                </td>
+                                <td>
+                                <input type="text" id="creditInput" name="credit" 
+                                placeholder="Credit" required>
+                                </td>
+
+                                <td>
+                                <button class="delete_course_btn" onclick="deleteRow(this)">  
+                                    <img src="{{url_for('static', filename='Images/delete.png')}}" alt="plus" class="plus">
+                                </button>
+                                </td>
+
+                                <!-- raw end -->
+                            </tr>
+                            
+                            
+                        </tbody>
+                        
+                    </table>
+                    <!-- <div class="add_course">
+                    <button class="add_course_btn" onclick="addRow1()">  
+                        <img src="/Assets/Images/add_icon.png" alt="plus" class="plus">
+
+                        
+                        Add Course
+                    </button>
+                    </div> -->
+                    <div class="sem_cal">
+                        <button class="sem_cal_btn">
+                            Semester GPA <span class="sem_gpa">3.5</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </form>
+        </section>
+        <!-- add sememster button -->
+        <div class="add_sem">
+        <button class="add_sem_btn" onclick="addSemester()">  
+            <img src="{{url_for('static', filename='Images/post.png')}}" alt="plus" class="plus">
+            Add Semester
+        </button>
+        </div>
+{% endblock %}
+<!-- hero section end -->
+    <!-- footer start -->
+    {% include 'footer.html' %}
+        
+  <!-- footer end -->
+</div>
+<script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+      integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+      crossorigin="anonymous">
+</script>
+
+<script>
+    function addSemester() {
+        // Get the grid container element
+        var gridContainer = document.getElementById("gridContainer");
+
+        // Create a unique table ID
+        var tableId = "table" + (gridContainer.children.length + 1);
+
+        // Create a new semester div with its content
+        var newSemesterDiv = document.createElement("div");
+        newSemesterDiv.classList.add("g-col-6");
+
+        newSemesterDiv.innerHTML = `
+            <div class="table-container" id="tableContainer">
+                <table class="table" id="${tableId}">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Course</th>
+                            <th scope="col">Grade</th>
+                            <th scope="col">Credit</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td><select id="module" name="module">
+                                        {% for module in modules %}
+                                        <option value="{{ module[0] }}">{{ module[1] }}</option>
+                                        {% endfor %}
+                                    </select></td>
+                            <td>
+                                <span class="selected-course">Grade</span>
+                                <select id="grade" name="grade">
+                                    {% for grade in grades %}
+                                    <option value="{{ grade[0] }}">{{ grade[1] }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" id="creditInput" name="credit" placeholder="Credit" required>
+                            </td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td><select id="module" name="module">
+                                        {% for module in modules %}
+                                        <option value="{{ module[0] }}">{{ module[1] }}</option>
+                                        {% endfor %}
+                                    </select></td>
+                            <td>
+                                <span class="selected-course">Grade</span>
+                                <select id="grade" name="grade">
+                                    {% for grade in grades %}
+                                    <option value="{{ grade[0] }}">{{ grade[1] }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" id="creditInput" name="credit" placeholder="Credit" required>
+                            </td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td><select id="module" name="module">
+                                        {% for module in modules %}
+                                        <option value="{{ module[0] }}">{{ module[1] }}</option>
+                                        {% endfor %}
+                                    </select></td>
+                            <td>
+                                <span class="selected-course">Grade</span>
+                                <select id="grade" name="grade">
+                                    {% for grade in grades %}
+                                    <option value="{{ grade[0] }}">{{ grade[1] }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" id="creditInput" name="credit" placeholder="Credit" required>
+                            </td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td><select id="module" name="module">
+                                        {% for module in modules %}
+                                        <option value="{{ module[0] }}">{{ module[1] }}</option>
+                                        {% endfor %}
+                                    </select></td>
+                            <td>
+                                <span class="selected-course">Grade</span>
+                                <select id="grade" name="grade">
+                                    {% for grade in grades %}
+                                    <option value="{{ grade[0] }}">{{ grade[1] }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" id="creditInput" name="credit" placeholder="Credit" required>
+                            </td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td><select id="module" name="module">
+                                        {% for module in modules %}
+                                        <option value="{{ module[0] }}">{{ module[1] }}</option>
+                                        {% endfor %}
+                                    </select></td>
+                            <td>
+                                <span class="selected-course">Grade</span>
+                                <select id="grade" name="grade">
+                                    {% for grade in grades %}
+                                    <option value="{{ grade[0] }}">{{ grade[1] }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" id="creditInput" name="credit" placeholder="Credit" required>
+                            </td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td><select id="module" name="module">
+                                        {% for module in modules %}
+                                        <option value="{{ module[0] }}">{{ module[1] }}</option>
+                                        {% endfor %}
+                                    </select></td>
+                            <td>
+                                <span class="selected-course">Grade</span>
+                                <select id="grade" name="grade">
+                                    {% for grade in grades %}
+                                    <option value="{{ grade[0] }}">{{ grade[1] }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" id="creditInput" name="credit" placeholder="Credit" required>
+                            </td>
+                            <td>
+                                <button class="delete_course_btn" onclick="deleteRow(this)">
+                                    <img src="{{url_for('static', filename='Images/delete.png')}}" alt="plus" class="plus">
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="sem_cal">
+                    <button class="sem_cal_btn">
+                        Semester GPA <span class="sem_gpa">3.5</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        `;
+
+        // Append the new semester div to the grid container
+        gridContainer.appendChild(newSemesterDiv);
+    }
+//test addrow function
+    // function addRow(tableId) {
+    //     // Find the table with the specified ID
+    //     var table = document.getElementById(tableId);
+
+    //     // Create a new row
+    //     var newRow = table.querySelector('tbody').insertRow();
+
+    //     // Add cells to the new row
+    //     for (var i = 0; i < 5; i++) {
+    //         var cell = newRow.insertCell(i);
+
+    //         if (i === 0) {
+    //             // If it's the first cell (th scope="row"), set the scope and content
+    //             cell.scope = 'row';
+    //             cell.innerHTML = table.querySelectorAll('tbody tr').length;
+    //         } else if (i === 1) {
+    //             // If it's the second cell (Course name), set the content
+    //             cell.innerHTML = 'course';
+    //         } else if (i === 2) {
+    //             // If it's the third cell (Grade dropdown), create the dropdown
+    //             var gradeCellContent = '<span class="selected-course">Grade</span>' +
+    //                 '<select>' +
+    //                 '<option value="course1">A+</option>' +
+    //                 '<option value="course2">A</option>' +
+    //                 // Add other grade options here
+    //                 '</select>';
+    //             cell.innerHTML = gradeCellContent;
+    //         } else if (i === 3) {
+    //             // If it's the fourth cell (Credit input), create the input
+    //             var creditCellContent = '<input type="text" id="creditInput" name="credit" placeholder="Credit" required>';
+    //             cell.innerHTML = creditCellContent;
+    //         } else if (i === 4) {
+    //             // If it's the fifth cell (Delete button), create the delete button
+    //             var deleteCellContent = '<button class="delete_course_btn" onclick="deleteRow(this)">' +
+    //                 '<img src="/Assets/Images/delete.png" alt="plus" class="plus">' +
+    //                 '</button>';
+    //             cell.innerHTML = deleteCellContent;
+    //         }
+    //     }
+    // }
+    // function addRow1() {
+    //     // Find the tbody element in your table
+    //     var tbody = document.querySelector('table tbody');
+
+    //     // Create a new row
+    //     var newRow = tbody.insertRow();
+
+    //     // Add cells to the new row
+    //     for (var i = 0; i < 5; i++) {
+    //         var cell = newRow.insertCell(i);
+
+    //         if (i === 0) {
+    //             // If it's the first cell (th scope="row"), set the scope and content
+    //             cell.scope = 'row';
+    //             cell.innerHTML = tbody.rows.length;
+    //         } else if (i === 1) {
+    //             // If it's the second cell (Course name), set the content
+    //             cell.innerHTML = 'course';
+                
+    //         } else if (i === 2) {
+    //             // If it's the third cell (Grade dropdown), create the dropdown
+    //             var gradeCellContent = '<span class="selected-course">Grade</span>' +
+    //                                    '<select>' +
+    //                                    '<option value="course1">A+</option>' +
+    //                                    '<option value="course2">A</option>' +
+    //                                    '<option value="course3">A-</option>' +
+    //                                    '<option value="course4">B+</option>' +
+    //                                    '<option value="course5">B</option>' +
+    //                                    '<option value="course6">B-</option>' +
+    //                                    '<option value="course7">C+</option>' +
+    //                                    '<option value="course8">C</option>' +
+    //                                    '<option value="course9">C-</option>' +
+    //                                    '<option value="course10">D+</option>' +
+    //                                    '<option value="course11">D</option>' +
+    //                                    '<option value="course12">D-</option>' +
+    //                                    '</select>';
+    //             cell.innerHTML = gradeCellContent;
+    //         } else if (i === 3) {
+    //             // If it's the fourth cell (Credit input), create the input
+    //             var creditCellContent = '<input type="text" id="creditInput" name="credit" placeholder="Credit" required>';
+    //             cell.innerHTML = creditCellContent;
+    //         } else if (i === 4) {
+    //             // If it's the fifth cell (Delete button), create the delete button
+    //             var deleteCellContent = '<button class="delete_course_btn" onclick="deleteRow(this)">' +
+    //                                     '<img src="/Assets/Images/delete.png" alt="plus" class="plus">' +
+    //                                     '</button>';
+    //             cell.innerHTML = deleteCellContent;
+    //         }
+    //     }
+    // }
+
+
+    function deleteRow(button) {
+        // Find the row containing the clicked button
+        var row = button.closest('tr');
+
+        // Remove the row from the table
+        row.remove();
+    }
+</script>
+
+</body>
+</html>
+ 
