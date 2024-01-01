@@ -89,15 +89,15 @@
                                 </td>
 
                                 <td>
-                                <!-- <button class="delete_course_btn" onclick="deleteRow(this)">  
-                                    <img src="/Assets/Images/delete.png" alt="plus" class="plus">
-                                </button> -->
+                                <button class="delete_course_btn" onclick="deleteRow(this)">  
+                                    <img src="{{url_for('static', filename='Images/delete.png')}}" alt="plus" class="plus">
+                                </button>
                                 </td>
 
                                 <!-- raw end -->
                             </tr>
                             <tr>
-                                <th scope="row">1</th>
+                                <th scope="row">2</th>
 
                                 <!--Raw start  -->
                                 <td>
@@ -123,15 +123,15 @@
                                 </td>
 
                                 <td>
-                                <!-- <button class="delete_course_btn" onclick="deleteRow(this)">  
-                                    <img src="/Assets/Images/delete.png" alt="plus" class="plus">
-                                </button> -->
+                                <button class="delete_course_btn" onclick="deleteRow(this)">  
+                                    <img src="{{url_for('static', filename='Images/delete.png')}}" alt="plus" class="plus">
+                                </button>
                                 </td>
 
                                 <!-- raw end -->
                             </tr>
                             <tr>
-                                <th scope="row">1</th>
+                                <th scope="row">3</th>
 
                                 <!--Raw start  -->
                                 <td>
@@ -157,15 +157,15 @@
                                 </td>
 
                                 <td>
-                                <!-- <button class="delete_course_btn" onclick="deleteRow(this)">  
-                                    <img src="/Assets/Images/delete.png" alt="plus" class="plus">
-                                </button> -->
+                                <button class="delete_course_btn" onclick="deleteRow(this)">  
+                                    <img src="{{url_for('static', filename='Images/delete.png')}}" alt="plus" class="plus">
+                                </button>
                                 </td>
 
                                 <!-- raw end -->
                             </tr>
                             <tr>
-                                <th scope="row">1</th>
+                                <th scope="row">4</th>
 
                                 <!--Raw start  -->
                                 <td>
@@ -191,49 +191,15 @@
                                 </td>
 
                                 <td>
-                                <!-- <button class="delete_course_btn" onclick="deleteRow(this)">  
-                                    <img src="/Assets/Images/delete.png" alt="plus" class="plus">
-                                </button> -->
+                                <button class="delete_course_btn" onclick="deleteRow(this)">  
+                                    <img src="{{url_for('static', filename='Images/delete.png')}}" alt="plus" class="plus">
+                                </button>
                                 </td>
 
                                 <!-- raw end -->
                             </tr>
                             <tr>
-                                <th scope="row">1</th>
-
-                                <!--Raw start  -->
-                                <td>
-                                    <select id="module" name="module">
-                                        {% for module in modules %}
-                                        <option value="{{ module[0] }}">{{ module[1] }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </td>
-                            
-                                
-                            </td> 
-                            <td> <span class="selected-course">Grade</span>
-                                <select id="grade" name="grade">
-                                    {% for grade in grades %}
-                                    <option value="{{ grade[0] }}">{{ grade[1] }}</option>
-                                    {% endfor %}
-                                </select>
-                                </td>
-                                <td>
-                                <input type="text" id="creditInput" name="credit" 
-                                placeholder="Credit" required>
-                                </td>
-
-                                <td>
-                                <!-- <button class="delete_course_btn" onclick="deleteRow(this)">  
-                                    <img src="/Assets/Images/delete.png" alt="plus" class="plus">
-                                </button> -->
-                                </td>
-
-                                <!-- raw end -->
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
+                                <th scope="row">5</th>
 
                                 <!--Raw start  -->
                                 <td>
@@ -267,18 +233,17 @@
                                 <!-- raw end -->
                             </tr>
                             
-                            
                         </tbody>
                         
                     </table>
-                    <!-- <div class="add_course">
+                    <div class="add_course">
                     <button class="add_course_btn" onclick="addRow1()">  
-                        <img src="/Assets/Images/add_icon.png" alt="plus" class="plus">
+                        <img src="{{url_for('static', filename='Images/add_icon.png')}}" alt="plus" class="plus">
 
                         
                         Add Course
                     </button>
-                    </div> -->
+                    </div>
                     <div class="sem_cal">
                         <button class="sem_cal_btn">
                             Semester GPA <span class="sem_gpa">3.5</span>
@@ -354,95 +319,9 @@
                                 <input type="text" id="creditInput" name="credit" placeholder="Credit" required>
                             </td>
                             <td>
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td><select id="module" name="module">
-                                        {% for module in modules %}
-                                        <option value="{{ module[0] }}">{{ module[1] }}</option>
-                                        {% endfor %}
-                                    </select></td>
-                            <td>
-                                <span class="selected-course">Grade</span>
-                                <select id="grade" name="grade">
-                                    {% for grade in grades %}
-                                    <option value="{{ grade[0] }}">{{ grade[1] }}</option>
-                                    {% endfor %}
-                                </select>
-                            </td>
-                            <td>
-                                <input type="text" id="creditInput" name="credit" placeholder="Credit" required>
-                            </td>
-                            <td>
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td><select id="module" name="module">
-                                        {% for module in modules %}
-                                        <option value="{{ module[0] }}">{{ module[1] }}</option>
-                                        {% endfor %}
-                                    </select></td>
-                            <td>
-                                <span class="selected-course">Grade</span>
-                                <select id="grade" name="grade">
-                                    {% for grade in grades %}
-                                    <option value="{{ grade[0] }}">{{ grade[1] }}</option>
-                                    {% endfor %}
-                                </select>
-                            </td>
-                            <td>
-                                <input type="text" id="creditInput" name="credit" placeholder="Credit" required>
-                            </td>
-                            <td>
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td><select id="module" name="module">
-                                        {% for module in modules %}
-                                        <option value="{{ module[0] }}">{{ module[1] }}</option>
-                                        {% endfor %}
-                                    </select></td>
-                            <td>
-                                <span class="selected-course">Grade</span>
-                                <select id="grade" name="grade">
-                                    {% for grade in grades %}
-                                    <option value="{{ grade[0] }}">{{ grade[1] }}</option>
-                                    {% endfor %}
-                                </select>
-                            </td>
-                            <td>
-                                <input type="text" id="creditInput" name="credit" placeholder="Credit" required>
-                            </td>
-                            <td>
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td><select id="module" name="module">
-                                        {% for module in modules %}
-                                        <option value="{{ module[0] }}">{{ module[1] }}</option>
-                                        {% endfor %}
-                                    </select></td>
-                            <td>
-                                <span class="selected-course">Grade</span>
-                                <select id="grade" name="grade">
-                                    {% for grade in grades %}
-                                    <option value="{{ grade[0] }}">{{ grade[1] }}</option>
-                                    {% endfor %}
-                                </select>
-                            </td>
-                            <td>
-                                <input type="text" id="creditInput" name="credit" placeholder="Credit" required>
-                            </td>
-                            <td>
-                                
+                                <button class="delete_course_btn" onclick="deleteRow(this)">
+                                    <img src="{{url_for('static', filename='Images/delete.png')}}" alt="plus" class="plus">
+                                </button>
                             </td>
                         </tr>
                         <tr>
@@ -469,8 +348,87 @@
                                 </button>
                             </td>
                         </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td><select id="module" name="module">
+                                        {% for module in modules %}
+                                        <option value="{{ module[0] }}">{{ module[1] }}</option>
+                                        {% endfor %}
+                                    </select></td>
+                            <td>
+                                <span class="selected-course">Grade</span>
+                                <select id="grade" name="grade">
+                                    {% for grade in grades %}
+                                    <option value="{{ grade[0] }}">{{ grade[1] }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" id="creditInput" name="credit" placeholder="Credit" required>
+                            </td>
+                            <td>
+                                <button class="delete_course_btn" onclick="deleteRow(this)">
+                                    <img src="{{url_for('static', filename='Images/delete.png')}}" alt="plus" class="plus">
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td><select id="module" name="module">
+                                        {% for module in modules %}
+                                        <option value="{{ module[0] }}">{{ module[1] }}</option>
+                                        {% endfor %}
+                                    </select></td>
+                            <td>
+                                <span class="selected-course">Grade</span>
+                                <select id="grade" name="grade">
+                                    {% for grade in grades %}
+                                    <option value="{{ grade[0] }}">{{ grade[1] }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" id="creditInput" name="credit" placeholder="Credit" required>
+                            </td>
+                            <td>
+                                <button class="delete_course_btn" onclick="deleteRow(this)">
+                                    <img src="{{url_for('static', filename='Images/delete.png')}}" alt="plus" class="plus">
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5</th>
+                            <td><select id="module" name="module">
+                                        {% for module in modules %}
+                                        <option value="{{ module[0] }}">{{ module[1] }}</option>
+                                        {% endfor %}
+                                    </select></td>
+                            <td>
+                                <span class="selected-course">Grade</span>
+                                <select id="grade" name="grade">
+                                    {% for grade in grades %}
+                                    <option value="{{ grade[0] }}">{{ grade[1] }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" id="creditInput" name="credit" placeholder="Credit" required>
+                            </td>
+                            <td>
+                                <button class="delete_course_btn" onclick="deleteRow(this)">
+                                    <img src="{{url_for('static', filename='Images/delete.png')}}" alt="plus" class="plus">
+                                </button>
+                            </td>
+                        </tr>
+                        
                     </tbody>
                 </table>
+                <div class="add_course">
+                    <button class="add_course_btn" onclick="addRow('${tableId}')">  
+                        <img src="{{url_for('static', filename='Images/add_icon.png')}}" alt="plus" class="plus">
+                        Add Course
+                    </button>
+                    </div>
                 <div class="sem_cal">
                     <button class="sem_cal_btn">
                         Semester GPA <span class="sem_gpa">3.5</span>
@@ -484,96 +442,97 @@
         gridContainer.appendChild(newSemesterDiv);
     }
 //test addrow function
-    // function addRow(tableId) {
-    //     // Find the table with the specified ID
-    //     var table = document.getElementById(tableId);
+    function addRow(tableId) {
+        // Find the table with the specified ID
+        var table = document.getElementById(tableId);
 
-    //     // Create a new row
-    //     var newRow = table.querySelector('tbody').insertRow();
+        // Create a new row
+        var newRow = table.querySelector('tbody').insertRow();
 
-    //     // Add cells to the new row
-    //     for (var i = 0; i < 5; i++) {
-    //         var cell = newRow.insertCell(i);
+        // Add cells to the new row
+        for (var i = 0; i < 5; i++) {
+            var cell = newRow.insertCell(i);
 
-    //         if (i === 0) {
-    //             // If it's the first cell (th scope="row"), set the scope and content
-    //             cell.scope = 'row';
-    //             cell.innerHTML = table.querySelectorAll('tbody tr').length;
-    //         } else if (i === 1) {
-    //             // If it's the second cell (Course name), set the content
-    //             cell.innerHTML = 'course';
-    //         } else if (i === 2) {
-    //             // If it's the third cell (Grade dropdown), create the dropdown
-    //             var gradeCellContent = '<span class="selected-course">Grade</span>' +
-    //                 '<select>' +
-    //                 '<option value="course1">A+</option>' +
-    //                 '<option value="course2">A</option>' +
-    //                 // Add other grade options here
-    //                 '</select>';
-    //             cell.innerHTML = gradeCellContent;
-    //         } else if (i === 3) {
-    //             // If it's the fourth cell (Credit input), create the input
-    //             var creditCellContent = '<input type="text" id="creditInput" name="credit" placeholder="Credit" required>';
-    //             cell.innerHTML = creditCellContent;
-    //         } else if (i === 4) {
-    //             // If it's the fifth cell (Delete button), create the delete button
-    //             var deleteCellContent = '<button class="delete_course_btn" onclick="deleteRow(this)">' +
-    //                 '<img src="/Assets/Images/delete.png" alt="plus" class="plus">' +
-    //                 '</button>';
-    //             cell.innerHTML = deleteCellContent;
-    //         }
-    //     }
-    // }
-    // function addRow1() {
-    //     // Find the tbody element in your table
-    //     var tbody = document.querySelector('table tbody');
+            if (i === 0) {
+                // If it's the first cell (th scope="row"), set the scope and content
+                cell.scope = 'row';
+                cell.innerHTML = table.querySelectorAll('tbody tr').length;
+            } else if (i === 1) {
+                // If it's the second cell (Course name), set the content
+                var courceCellContent = `<select id="module" name="module">
+                                            {% for module in modules %}
+                                                <option value="{{ module[0] }}">{{ module[1] }}</option>
+                                            {% endfor %}
+                                         </select>`;
+                cell.innerHTML = courceCellContent;
+            } else if (i === 2) {
+                // If it's the third cell (Grade dropdown), create the dropdown
+                var gradeCellContent = `<span class="selected-course">Grade</span>
+                                            <select id="grade" name="grade">
+                                                {% for grade in grades %}
+                                                    <option value="{{ grade[0] }}">{{ grade[1] }}</option>
+                                                {% endfor %}
+                                            </select>`;
+                cell.innerHTML = gradeCellContent;
+            } else if (i === 3) {
+                // If it's the fourth cell (Credit input), create the input
+                var creditCellContent = '<input type="text" id="creditInput" name="credit" placeholder="Credit" required>';
+                cell.innerHTML = creditCellContent;
+            } else if (i === 4) {
+                // If it's the fifth cell (Delete button), create the delete button
+                var deleteCellContent = `<button class="delete_course_btn" onclick="deleteRow(this)">
+                                            <img src="{{url_for('static', filename='Images/delete.png')}}" alt="plus" class="plus">
+                                        </button>`;
+                cell.innerHTML = deleteCellContent;
+            }
+        }
+    }
+    function addRow1() {
+        // Find the tbody element in your table
+        var tbody = document.querySelector('table tbody');
 
-    //     // Create a new row
-    //     var newRow = tbody.insertRow();
+        // Create a new row
+        var newRow = tbody.insertRow();
 
-    //     // Add cells to the new row
-    //     for (var i = 0; i < 5; i++) {
-    //         var cell = newRow.insertCell(i);
+        // Add cells to the new row
+        for (var i = 0; i < 5; i++) {
+            var cell = newRow.insertCell(i);
 
-    //         if (i === 0) {
-    //             // If it's the first cell (th scope="row"), set the scope and content
-    //             cell.scope = 'row';
-    //             cell.innerHTML = tbody.rows.length;
-    //         } else if (i === 1) {
-    //             // If it's the second cell (Course name), set the content
-    //             cell.innerHTML = 'course';
+            if (i === 0) {
+                // If it's the first cell (th scope="row"), set the scope and content
+                cell.scope = 'row';
+                cell.innerHTML = tbody.rows.length;
+            } else if (i === 1) {
+                // If it's the second cell (Course name), set the content
+                var courceCellContent = `<select id="module" name="module">
+                                            {% for module in modules %}
+                                                <option value="{{ module[0] }}">{{ module[1] }}</option>
+                                            {% endfor %}
+                                         </select>`;
+                cell.innerHTML = courceCellContent ;
                 
-    //         } else if (i === 2) {
-    //             // If it's the third cell (Grade dropdown), create the dropdown
-    //             var gradeCellContent = '<span class="selected-course">Grade</span>' +
-    //                                    '<select>' +
-    //                                    '<option value="course1">A+</option>' +
-    //                                    '<option value="course2">A</option>' +
-    //                                    '<option value="course3">A-</option>' +
-    //                                    '<option value="course4">B+</option>' +
-    //                                    '<option value="course5">B</option>' +
-    //                                    '<option value="course6">B-</option>' +
-    //                                    '<option value="course7">C+</option>' +
-    //                                    '<option value="course8">C</option>' +
-    //                                    '<option value="course9">C-</option>' +
-    //                                    '<option value="course10">D+</option>' +
-    //                                    '<option value="course11">D</option>' +
-    //                                    '<option value="course12">D-</option>' +
-    //                                    '</select>';
-    //             cell.innerHTML = gradeCellContent;
-    //         } else if (i === 3) {
-    //             // If it's the fourth cell (Credit input), create the input
-    //             var creditCellContent = '<input type="text" id="creditInput" name="credit" placeholder="Credit" required>';
-    //             cell.innerHTML = creditCellContent;
-    //         } else if (i === 4) {
-    //             // If it's the fifth cell (Delete button), create the delete button
-    //             var deleteCellContent = '<button class="delete_course_btn" onclick="deleteRow(this)">' +
-    //                                     '<img src="/Assets/Images/delete.png" alt="plus" class="plus">' +
-    //                                     '</button>';
-    //             cell.innerHTML = deleteCellContent;
-    //         }
-    //     }
-    // }
+            } else if (i === 2) {
+                // If it's the third cell (Grade dropdown), create the dropdown
+                var gradeCellContent = `<span class="selected-course">Grade</span>
+                                            <select id="grade" name="grade">
+                                                {% for grade in grades %}
+                                                    <option value="{{ grade[0] }}">{{ grade[1] }}</option>
+                                                {% endfor %}
+                                            </select>`;
+                cell.innerHTML = gradeCellContent;
+            } else if (i === 3) {
+                // If it's the fourth cell (Credit input), create the input
+                var creditCellContent = '<input type="text" id="creditInput" name="credit" placeholder="Credit" required>';
+                cell.innerHTML = creditCellContent;
+            } else if (i === 4) {
+                // If it's the fifth cell (Delete button), create the delete button
+                var deleteCellContent = `<button class="delete_course_btn" onclick="deleteRow(this)">
+                                            <img src="{{url_for('static', filename='Images/delete.png')}}" alt="plus" class="plus">
+                                        </button>`;
+                cell.innerHTML = deleteCellContent;
+            }
+        }
+    }
 
 
     function deleteRow(button) {
@@ -587,4 +546,3 @@
 
 </body>
 </html>
- 
