@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash,jsonify
+from logic import Logic
 import mysql.connector
-
+import re
 
 config = {
     'user': 'root',
@@ -54,6 +55,58 @@ def testcal_gpa():
         cursor.close()
         connection.close()
 
+@app.route('/credit', methods=['GET', 'POST']) # handle ajax
+def fetch():
+
+    if request.method == 'POST':
+        m_id = request.form['m_id']
+
+        connection.connect() 
+        read_q = "SELECT m_credits FROM module WHERE m_id= '"+m_id+"'"
+
+        cursor = connection.cursor()
+        cursor.execute(read_q)
+        credit = cursor.fetchall()
+        cursor.close()
+        connection.close()
+
+    return credit
+
+@app.route('/setGpa', methods=['GET', 'POST']) # set GPA
+def setGpa():
+
+    list_credit = [] #credit hours
+    list_gpv = [] # grade point value list
+
+    if request.method == 'POST':
+        selection = request.form['selection']
+        credit = request.form['credit']
+
+        a = re.findall(r'\d+', selection)
+        b = re.findall(r'\d+', credit)
+
+    selection_int_list = list(map(float, a))
+    list_credit = list(map(float, b))
+
+    connection.connect() 
+
+    for i in range(1, len(selection_int_list)+1, 2):
+ 
+        read_q = "SELECT g_point FROM grade WHERE g_id= '"+str(selection_int_list[i])+"'"
+
+        cursor = connection.cursor()
+        cursor.execute(read_q)
+        fetches = cursor.fetchall()
+        list_gpv.append(float(fetches[0][0]))
+        cursor.close()
+
+    connection.close()
+    
+    my_instance = Logic(list_credit,list_gpv)
+
+    return str(my_instance.getGPA())
+
+
 #about us page       
 @app.route('/aboutus')
 def aboutus():
@@ -64,3 +117,6 @@ def aboutus():
 def faq():
     return render_template("faq.html")
     
+
+if __name__ == '__main__':
+    app.run(debug=True)

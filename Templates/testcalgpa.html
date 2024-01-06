@@ -12,24 +12,157 @@
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
           crossorigin="anonymous">
     <title>NSBM</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-        $(document).ready(function(){
-            $('#module').change(function(){
-                var selectedValue = $('#module option:selected').text();
-                updateText(selectedValue);
-            });
-        
-            function updateText(selectedValue) {
-                $.ajax({
-                    url: "/fetch",
+        function setCredit(moduleId){ //get credits for user selected module
+
+            var creditId = moduleId.replace('m', 'c');
+            var selectedValue = $('#'+moduleId+' option:selected').val();
+                 $.ajax({
+                    url: "/credit",
                     method: "POST",
-                    data: {query: selectedValue},
+                    data: {m_id: selectedValue},
                     success: function(data) {
-                        $('#dynamicContent').html(data);
+                        $('#'+creditId).val(data);
                     }
                 });
+
+        }
+
+ 
+    function semesterGpa(id,event) { // calculate GPA by semester
+
+        event.preventDefault();//stop form submit
+
+        var tableId = id.substring(6, 12);
+
+        var container = document.getElementById(tableId);
+
+        var dropdowns = container.getElementsByTagName("select");
+        var credits = container.querySelectorAll("input[type='text']");
+
+        var selectedValues = [];
+        var creditValues = [];
+
+        breakFlag=false;
+
+        for (var i = 0; i < dropdowns.length; i++) {
+
+            var selectedOption = dropdowns[i].options[dropdowns[i].selectedIndex];
+
+            if (selectedOption.value>0) {
+                selectedValues.push(selectedOption.value);
+
+            }else{
+                selectedValues = [];
+                breakFlag=true;
+                break;
+
             }
-        });
+        }
+
+        for (var i = 0; i < credits.length; i++) {
+
+            var creditOption = credits[i].value;
+
+            if (selectedOption) {
+                creditValues.push(creditOption);
+            }
+        }
+
+        if(!breakFlag){
+
+            $.ajax({
+                    url: "/setGpa",
+                    method: "POST",
+                    data: {selection: JSON.stringify(selectedValues), credit: JSON.stringify(creditValues)},
+                    success: function(data) {
+                        $('#'+tableId+'sem_gpa').html(data);
+                        console.log("gpa: "+data);
+                    }
+            });
+        }else{
+            alert("Please select all the options in dropdown list");
+        }
+    }
+
+    function finalGpa(event) {// calculate all semesters gpa
+
+        event.preventDefault();
+
+        var container = document.getElementById("gridContainer");
+
+        var dropdowns = container.getElementsByTagName("select");
+        var credits = container.querySelectorAll("input[type='text']");
+
+        var selectedValues = [];
+        var creditValues = [];
+
+        breakFlag=false;
+
+        for (var i = 0; i < dropdowns.length; i++) {
+
+        var selectedOption = dropdowns[i].options[dropdowns[i].selectedIndex];
+
+        if (selectedOption.value>0) {
+            selectedValues.push(selectedOption.value);
+
+        }else{
+                selectedValues = [];
+                breakFlag=true;
+                break;
+            }
+        }
+
+        for (var i = 0; i < credits.length; i++) {
+
+        var creditOption = credits[i].value;
+
+        if (selectedOption) {
+            creditValues.push(creditOption);
+        }
+        }
+
+        if(!breakFlag){
+
+            $.ajax({
+                    url: "/setGpa",
+                    method: "POST",
+                    data: {selection: JSON.stringify(selectedValues), credit: JSON.stringify(creditValues)},
+                    success: function(data) {
+                        $('#finalGpa').html(data);
+                        console.log("finalgpa: "+data);       
+                    }
+            });
+
+        }else{
+            alert("Please select all the options on page");
+        }
+
+    }
+
+
+function getSemesterLength(tableId) {// all the number of the selections have on that given id semester section
+    
+    var parentElement = document.getElementById(tableId);
+    parentElement = parentElement.querySelector('#b'+tableId);
+
+        var selectElements = parentElement.children;
+       
+ return selectElements.length;
+}
+
+function checkItemAvailability(itemId) { //check rows availability. prevent from rows delete from semester center and manage changing increment
+
+    var item = document.getElementById(itemId);
+
+    if (item) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 </script>
 </head>
 <body>
@@ -48,11 +181,11 @@
         <section>
         <form action="/unknown" method="post">
         <div class="grid" id="gridContainer">
-            <div class="g-col-6" >
+            <div class="g-col-6">
                 <div class="table-container" >
-                    <table class="table" id="tableId" >
+                    <table class="table" id="table1" >
                         <thead>
-                        <span class="sem_no" id="sem_no" >Sememster 1 </span>
+                        <span class="sem_no" id="sem_no" >Semester 1 </span>
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Course</th>
@@ -61,13 +194,14 @@
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="btable1">
                             <tr>
                                 <th scope="row">1</th>
 
                                 <!--Raw start  -->
                                 <td>
-                                    <select id="module" name="module">
+                                    <select id="table1m1" name="module" onchange="setCredit(this.id)">
+                                        <option value="-1">Select Module</option>
                                         {% for module in modules %}
                                         <option value="{{ module[0] }}">{{ module[1] }}</option>
                                         {% endfor %}
@@ -77,14 +211,14 @@
                                 
                             </td> 
                             <td> <span class="selected-course">Grade</span>
-                                <select id="grade" name="grade">
+                                <select id="table1g1" name="grade">
                                     {% for grade in grades %}
                                     <option value="{{ grade[0] }}">{{ grade[1] }}</option>
                                     {% endfor %}
                                 </select>
                                 </td>
                                 <td>
-                                <input type="text" id="creditInput" name="credit" 
+                                <input type="text" id="table1c1" name="credit" 
                                 placeholder="Credit" required>
                                 </td>
 
@@ -101,7 +235,8 @@
 
                                 <!--Raw start  -->
                                 <td>
-                                    <select id="module" name="module">
+                                    <select id="table1m2" name="module" onchange="setCredit(this.id)">
+                                        <option value="-1">Select Module</option>
                                         {% for module in modules %}
                                         <option value="{{ module[0] }}">{{ module[1] }}</option>
                                         {% endfor %}
@@ -111,14 +246,14 @@
                                 
                             </td> 
                             <td> <span class="selected-course">Grade</span>
-                                <select id="grade" name="grade">
+                                <select id="table1g2" name="grade">
                                     {% for grade in grades %}
                                     <option value="{{ grade[0] }}">{{ grade[1] }}</option>
                                     {% endfor %}
                                 </select>
                                 </td>
                                 <td>
-                                <input type="text" id="creditInput" name="credit" 
+                                <input type="text" id="table1c2" name="credit" 
                                 placeholder="Credit" required>
                                 </td>
 
@@ -135,7 +270,8 @@
 
                                 <!--Raw start  -->
                                 <td>
-                                    <select id="module" name="module">
+                                    <select id="table1m3" name="module" onchange="setCredit(this.id)">
+                                        <option value="-1">Select Module</option>
                                         {% for module in modules %}
                                         <option value="{{ module[0] }}">{{ module[1] }}</option>
                                         {% endfor %}
@@ -145,14 +281,14 @@
                                 
                             </td> 
                             <td> <span class="selected-course">Grade</span>
-                                <select id="grade" name="grade">
+                                <select id="table1g3" name="grade">
                                     {% for grade in grades %}
                                     <option value="{{ grade[0] }}">{{ grade[1] }}</option>
                                     {% endfor %}
                                 </select>
                                 </td>
                                 <td>
-                                <input type="text" id="creditInput" name="credit" 
+                                <input type="text" id="table1c3" name="credit" 
                                 placeholder="Credit" required>
                                 </td>
 
@@ -169,7 +305,8 @@
 
                                 <!--Raw start  -->
                                 <td>
-                                    <select id="module" name="module">
+                                    <select id="table1m4" name="module" onchange="setCredit(this.id)">
+                                        <option value="-1">Select Module</option>
                                         {% for module in modules %}
                                         <option value="{{ module[0] }}">{{ module[1] }}</option>
                                         {% endfor %}
@@ -179,14 +316,14 @@
                                 
                             </td> 
                             <td> <span class="selected-course">Grade</span>
-                                <select id="grade" name="grade">
+                                <select id="table1g4" name="grade">
                                     {% for grade in grades %}
                                     <option value="{{ grade[0] }}">{{ grade[1] }}</option>
                                     {% endfor %}
                                 </select>
                                 </td>
                                 <td>
-                                <input type="text" id="creditInput" name="credit" 
+                                <input type="text" id="table1c4" name="credit" 
                                 placeholder="Credit" required>
                                 </td>
 
@@ -203,7 +340,8 @@
 
                                 <!--Raw start  -->
                                 <td>
-                                    <select id="module" name="module">
+                                    <select id="table1m5" name="module" onchange="setCredit(this.id)">
+                                        <option value="-1">Select Module</option>
                                         {% for module in modules %}
                                         <option value="{{ module[0] }}">{{ module[1] }}</option>
                                         {% endfor %}
@@ -213,14 +351,14 @@
                                 
                             </td> 
                             <td> <span class="selected-course">Grade</span>
-                                <select id="grade" name="grade">
+                                <select id="table1g5" name="grade">
                                     {% for grade in grades %}
                                     <option value="{{ grade[0] }}">{{ grade[1] }}</option>
                                     {% endfor %}
                                 </select>
                                 </td>
                                 <td>
-                                <input type="text" id="creditInput" name="credit" 
+                                <input type="text" id="table1c5" name="credit" 
                                 placeholder="Credit" required>
                                 </td>
 
@@ -245,8 +383,9 @@
                     </button>
                     </div>
                     <div class="sem_cal">
-                        <button class="sem_cal_btn">
-                            Semester GPA <span class="sem_gpa">3.5</span>
+
+                        <button id="btnCaltable1" class="sem_cal_btn" onclick="semesterGpa(this.id,event)">
+                            Semester GPA <span id="table1sem_gpa" class="sem_gpa">0.0</span>
                         </button>
                     </div>
 
@@ -262,6 +401,14 @@
             Add Semester
         </button>
         </div>
+
+        <div class="add_sem">
+            <button id="btnFinalGpa" class="add_sem_btn" onclick="finalGpa(event)">
+                Final GPA <p id="finalGpa"></p>
+            </button>
+            
+        </div>
+        
 {% endblock %}
 <!-- hero section end -->
     <!-- footer start -->
@@ -299,24 +446,25 @@
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="b${tableId}">
                         <tr>
                             <th scope="row">1</th>
-                            <td><select id="module" name="module">
+                            <td><select id="${tableId}m1" name="module" onchange="setCredit(this.id)">
+                                    <option value="-1">Select Module</option>
                                         {% for module in modules %}
                                         <option value="{{ module[0] }}">{{ module[1] }}</option>
                                         {% endfor %}
                                     </select></td>
                             <td>
                                 <span class="selected-course">Grade</span>
-                                <select id="grade" name="grade">
+                                <select id="${tableId}g1" name="grade">
                                     {% for grade in grades %}
                                     <option value="{{ grade[0] }}">{{ grade[1] }}</option>
                                     {% endfor %}
                                 </select>
                             </td>
                             <td>
-                                <input type="text" id="creditInput" name="credit" placeholder="Credit" required>
+                                <input type="text" id="${tableId}c1" name="credit" placeholder="Credit" required>
                             </td>
                             <td>
                                 <button class="delete_course_btn" onclick="deleteRow(this)">
@@ -326,21 +474,22 @@
                         </tr>
                         <tr>
                             <th scope="row">2</th>
-                            <td><select id="module" name="module">
+                            <td><select id="${tableId}m2" name="module" onchange="setCredit(this.id)">
+                                <option value="-1">Select Module</option>
                                         {% for module in modules %}
                                         <option value="{{ module[0] }}">{{ module[1] }}</option>
                                         {% endfor %}
                                     </select></td>
                             <td>
                                 <span class="selected-course">Grade</span>
-                                <select id="grade" name="grade">
+                                <select id="${tableId}g2" name="grade">
                                     {% for grade in grades %}
                                     <option value="{{ grade[0] }}">{{ grade[1] }}</option>
                                     {% endfor %}
                                 </select>
                             </td>
                             <td>
-                                <input type="text" id="creditInput" name="credit" placeholder="Credit" required>
+                                <input type="text" id="${tableId}c2" name="credit" placeholder="Credit" required>
                             </td>
                             <td>
                                 <button class="delete_course_btn" onclick="deleteRow(this)">
@@ -350,21 +499,22 @@
                         </tr>
                         <tr>
                             <th scope="row">3</th>
-                            <td><select id="module" name="module">
+                            <td><select id="${tableId}m3" name="module" onchange="setCredit(this.id)">
+                                <option value="-1">Select Module</option>
                                         {% for module in modules %}
                                         <option value="{{ module[0] }}">{{ module[1] }}</option>
                                         {% endfor %}
                                     </select></td>
                             <td>
                                 <span class="selected-course">Grade</span>
-                                <select id="grade" name="grade">
+                                <select id="${tableId}g3" name="grade">
                                     {% for grade in grades %}
                                     <option value="{{ grade[0] }}">{{ grade[1] }}</option>
                                     {% endfor %}
                                 </select>
                             </td>
                             <td>
-                                <input type="text" id="creditInput" name="credit" placeholder="Credit" required>
+                                <input type="text" id="${tableId}c3" name="credit" placeholder="Credit" required>
                             </td>
                             <td>
                                 <button class="delete_course_btn" onclick="deleteRow(this)">
@@ -374,21 +524,22 @@
                         </tr>
                         <tr>
                             <th scope="row">4</th>
-                            <td><select id="module" name="module">
+                            <td><select id="${tableId}m4" name="module" onchange="setCredit(this.id)">
+                                <option value="-1">Select Module</option>
                                         {% for module in modules %}
                                         <option value="{{ module[0] }}">{{ module[1] }}</option>
                                         {% endfor %}
                                     </select></td>
                             <td>
                                 <span class="selected-course">Grade</span>
-                                <select id="grade" name="grade">
+                                <select id="${tableId}g4" name="grade">
                                     {% for grade in grades %}
                                     <option value="{{ grade[0] }}">{{ grade[1] }}</option>
                                     {% endfor %}
                                 </select>
                             </td>
                             <td>
-                                <input type="text" id="creditInput" name="credit" placeholder="Credit" required>
+                                <input type="text" id="${tableId}c4" name="credit" placeholder="Credit" required>
                             </td>
                             <td>
                                 <button class="delete_course_btn" onclick="deleteRow(this)">
@@ -398,21 +549,22 @@
                         </tr>
                         <tr>
                             <th scope="row">5</th>
-                            <td><select id="module" name="module">
+                            <td><select id="${tableId}m5" name="module" onchange="setCredit(this.id)">
+                                <option value="-1">Select Module</option>
                                         {% for module in modules %}
                                         <option value="{{ module[0] }}">{{ module[1] }}</option>
                                         {% endfor %}
                                     </select></td>
                             <td>
                                 <span class="selected-course">Grade</span>
-                                <select id="grade" name="grade">
+                                <select id="${tableId}g5" name="grade">
                                     {% for grade in grades %}
                                     <option value="{{ grade[0] }}">{{ grade[1] }}</option>
                                     {% endfor %}
                                 </select>
                             </td>
                             <td>
-                                <input type="text" id="creditInput" name="credit" placeholder="Credit" required>
+                                <input type="text" id="${tableId}c5" name="credit" placeholder="Credit" required>
                             </td>
                             <td>
                                 <button class="delete_course_btn" onclick="deleteRow(this)">
@@ -430,8 +582,8 @@
                     </button>
                     </div>
                 <div class="sem_cal">
-                    <button class="sem_cal_btn">
-                        Semester GPA <span class="sem_gpa">3.5</span>
+                    <button id="btnCal${tableId}" class="sem_cal_btn" onclick="semesterGpa(this.id,event)">
+                        Semester GPA <span id="${tableId}sem_gpa" class="sem_gpa">0.0</span>
                     </button>
                 </div>
             </div>
@@ -446,6 +598,11 @@
         // Find the table with the specified ID
         var table = document.getElementById(tableId);
 
+        var length = getSemesterLength(tableId);
+        if(checkItemAvailability(tableId +"m"+ (length+1))){
+            length++;
+        }
+
         // Create a new row
         var newRow = table.querySelector('tbody').insertRow();
 
@@ -459,7 +616,8 @@
                 cell.innerHTML = table.querySelectorAll('tbody tr').length;
             } else if (i === 1) {
                 // If it's the second cell (Course name), set the content
-                var courceCellContent = `<select id="module" name="module">
+                var courceCellContent = `<select id="${tableId +"m"+ (length+1)}" name="module" onchange="setCredit(this.id)">
+                                            <option value="-1">Select Module</option>
                                             {% for module in modules %}
                                                 <option value="{{ module[0] }}">{{ module[1] }}</option>
                                             {% endfor %}
@@ -468,7 +626,7 @@
             } else if (i === 2) {
                 // If it's the third cell (Grade dropdown), create the dropdown
                 var gradeCellContent = `<span class="selected-course">Grade</span>
-                                            <select id="grade" name="grade">
+                                            <select id="${tableId +"g"+ (length+1)}" name="grade">
                                                 {% for grade in grades %}
                                                     <option value="{{ grade[0] }}">{{ grade[1] }}</option>
                                                 {% endfor %}
@@ -476,7 +634,7 @@
                 cell.innerHTML = gradeCellContent;
             } else if (i === 3) {
                 // If it's the fourth cell (Credit input), create the input
-                var creditCellContent = '<input type="text" id="creditInput" name="credit" placeholder="Credit" required>';
+                var creditCellContent = `<input type="text" id="${tableId +"c"+ (length+1)}" name="credit" placeholder="Credit" required>`;
                 cell.innerHTML = creditCellContent;
             } else if (i === 4) {
                 // If it's the fifth cell (Delete button), create the delete button
@@ -491,6 +649,11 @@
         // Find the tbody element in your table
         var tbody = document.querySelector('table tbody');
 
+        var length = getSemesterLength("table1");
+        if(checkItemAvailability("table1m"+(length+1))){
+            length++;
+        }
+
         // Create a new row
         var newRow = tbody.insertRow();
 
@@ -504,7 +667,8 @@
                 cell.innerHTML = tbody.rows.length;
             } else if (i === 1) {
                 // If it's the second cell (Course name), set the content
-                var courceCellContent = `<select id="module" name="module">
+                var courceCellContent = `<select id="table1m${(length+1)}" name="module" onchange="setCredit(this.id)">
+                                            <option value="-1">Select Module</option>
                                             {% for module in modules %}
                                                 <option value="{{ module[0] }}">{{ module[1] }}</option>
                                             {% endfor %}
@@ -514,7 +678,7 @@
             } else if (i === 2) {
                 // If it's the third cell (Grade dropdown), create the dropdown
                 var gradeCellContent = `<span class="selected-course">Grade</span>
-                                            <select id="grade" name="grade">
+                                            <select id="table1g${(length+1)}" name="grade">
                                                 {% for grade in grades %}
                                                     <option value="{{ grade[0] }}">{{ grade[1] }}</option>
                                                 {% endfor %}
@@ -522,7 +686,7 @@
                 cell.innerHTML = gradeCellContent;
             } else if (i === 3) {
                 // If it's the fourth cell (Credit input), create the input
-                var creditCellContent = '<input type="text" id="creditInput" name="credit" placeholder="Credit" required>';
+                var creditCellContent = `<input type="text" id="table1c${(length+1)}" name="credit" placeholder="Credit" required>`;
                 cell.innerHTML = creditCellContent;
             } else if (i === 4) {
                 // If it's the fifth cell (Delete button), create the delete button
@@ -542,6 +706,7 @@
         // Remove the row from the table
         row.remove();
     }
+
 </script>
 
 </body>
