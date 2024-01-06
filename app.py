@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash,jsonify
+from werkzeug.security import generate_password_hash, check_password_hash #generate password to hash type to save database. sequre option
 from logic import Logic
 import mysql.connector
 import re
@@ -89,6 +90,7 @@ def setGpa():
     list_credit = list(map(float, b))
 
     connection.connect() 
+    
 
     for i in range(1, len(selection_int_list)+1, 2):
  
@@ -106,6 +108,100 @@ def setGpa():
 
     return str(my_instance.getGPA())
 
+@app.route('/signup', methods=['GET', 'POST']) # for signup the user
+def signup():
+
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        repeat_password = request.form['r_password']
+
+        if password==repeat_password:
+
+            connection.connect()
+
+            read_q = "SELECT COUNT(*) FROM user where u_name= '"+username+"'" #check if username available on database then redirect to login
+
+            cursor = connection.cursor()
+            cursor.execute(read_q)
+            rows = cursor.fetchall()
+            cursor.close()
+            connection.close()
+
+            if rows[0][0] > 0: #check the data availability.. this query return 0 or 1. if username awailable count as 1. 
+                
+                return redirect(url_for('login')) #redirect to login page
+            else:
+                username = request.form['username']
+                password = request.form['password']
+
+                hashed_password = generate_password_hash(password, method='pbkdf2:sha256', salt_length=8) #generate hashed password to save on database
+
+                query = "INSERT INTO user (u_name, u_password) VALUES (%s, %s)" #insert registration data to user table.
+                values = (username, hashed_password)
+
+                try:
+                    connection.connect()
+                    cursor = connection.cursor()
+                    cursor.execute(query, values)
+                    connection.commit()
+                    return redirect(url_for('home')) # home page means the after load page signup. login page recomended to login to user again
+                                                        # try exp used for handle if have error on this process
+                
+                except Exception as e:
+                    return f"Error: {str(e)}"
+        else:
+            return render_template('signup.html', error='password not matching')
+    
+
+    return render_template('signup.html')   
+
+
+
+
+@app.route('/login', methods=['GET', 'POST'])# this function for handle the login page. check userdetails to login.
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        read_q = "SELECT u_name FROM user where u_name= '"+username+"';" # check if have username on database user table
+
+        connection.connect()
+        cursor = connection.cursor()
+        cursor.execute(read_q)
+        rows = cursor.fetchall()
+        cursor.close()
+        connection.close()
+
+        if rows[0][0]==username: #if username similar to user entered username.. then,
+
+            read_q = "SELECT u_password FROM user WHERE u_name = '"+username+"';" #..check the password
+
+            connection.connect()
+            cursor = connection.cursor()
+            cursor.execute(read_q)
+            rows = cursor.fetchall()
+            cursor.close()
+            connection.close()
+
+            if check_password_hash(rows[0][0], password): # convert hash password to regular type and check similarity.
+            #session['user_id'] = user.id
+            #flash('Login successful', 'success')
+                return render_template('home.html')
+            else:
+                return render_template('login.html', error='Username or Password is wrong')
+        else:
+            return render_template('login.html', error='Username or Password is wrong')
+
+    return render_template('login.html')
+
+
+@app.route('/logout') # logout user
+def logout():
+    #session.pop('user_id', None)
+    flash('You have been logged out', 'info')
+    return redirect(url_for('index'))
 
 #about us page       
 @app.route('/aboutus')
