@@ -62,9 +62,14 @@
   text-align: left;
 }
 
-.table th {
-  background-color: yellow; /* Background color for header cells */
+.table td select{
+  max-width: 20rem;
+  overflow: hidden;
 }
+
+/* .table th {
+  background: yellow; /* Background color for header cells 
+} */
 
 
 
@@ -76,7 +81,7 @@
 
 /* Input styles */
 input {
-  width: 50%;
+  width: 100%;
   padding: 2px;
 }
 
@@ -107,6 +112,9 @@ input {
 /* Delete btn style */
 
 .delete_course_btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
   background-color: transparent;
   border: none;
@@ -153,15 +161,19 @@ box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.4);
   display: block;
 }
 
-.content {
-  font-family: "Popins", sans-serif;
-  font-size:40px;
-  color: rgb(0, 0, 0);
-  text-align: center;
+.btnFinalGpa{
+  padding: 1rem;
+  margin-bottom: 0;
+  width: 10rem;
+  height: 4rem;
+  background: transparent;
+  border: none;
+  border-radius: 3rem;
+  font-size: 2rem;
   align-items: center;
- ;
-
+  justify-content: center;
 }
+
 
 .text-overlay {
   position: absolute;

@@ -391,8 +391,42 @@ function checkItemAvailability(itemId) { //check rows availability. prevent from
 
                 </div>
             </div>
+
+            
+
         </div>
         </form>
+        <div class="cal_circle">
+            <div class="circle_inner">
+                <div class="inner_circle_img">
+                    <img src="{{url_for('static', filename='Images/circle_inner.png')}}" alt="cal_icon" class="cal_icon">
+                    <div class="text-overlay">
+                        <h3>Cumulative GPA</h3>
+                        <span class="content">
+                            <button id="btnFinalGpa" class="btnFinalGpa" onclick="finalGpa(event)">
+                                <p id="finalGpa">00.00</p>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+          
+           
+          </div>
+          
+          
+          <p class="paragraph">
+            Discover Jobs Aligned with Your GPA<br>
+            Start Your Career Journey Now!
+          </p>
+          <div class="job_explore">
+            
+            <button class="job_explore_btn">  
+              
+             <span class="txt">Explore Jobs</span> 
+          </button>
+          
+          </div>
         </section>
         <!-- add sememster button -->
         <div class="add_sem">
@@ -402,13 +436,6 @@ function checkItemAvailability(itemId) { //check rows availability. prevent from
         </button>
         </div>
 
-        <div class="add_sem">
-            <button id="btnFinalGpa" class="add_sem_btn" onclick="finalGpa(event)">
-                Final GPA <p id="finalGpa"></p>
-            </button>
-            
-        </div>
-        
 {% endblock %}
 <!-- hero section end -->
     <!-- footer start -->
