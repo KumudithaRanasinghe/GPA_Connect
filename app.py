@@ -26,7 +26,7 @@ def index():
     value = cursor.fetchall()
     cursor.close()
     connection.close()
-    return render_template("index.html", data=value)
+    return render_template("testindex.html", data=value)
     
 
 #gpa calculation page
