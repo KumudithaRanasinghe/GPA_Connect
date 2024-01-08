@@ -94,6 +94,16 @@ input {
   cursor: pointer; /* Show pointer cursor on hover for better user experience */
 }
 
+/* selected degree button style */
+.selected_degree {
+  border: none;
+  border-radius: 50px; /* Adjust the border-radius as needed */
+  background-color: var(--btn_back);
+  padding: 10px 20px; /* Adjust padding as needed */
+  cursor: default;
+  width: fit-content;
+  
+}
 
 /* Add sem_cal style */
 
@@ -160,6 +170,7 @@ box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.4);
   max-height: 100%;
   display: block;
 }
+
 
 .btnFinalGpa{
   padding: 1rem;
