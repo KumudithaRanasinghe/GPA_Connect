@@ -162,8 +162,8 @@ def signup():
 
 
 
-@app.route('/login', methods=['GET', 'POST'])# this function for handle the login page. check userdetails to login.
-def login():
+@app.route('/signin', methods=['GET', 'POST'])# this function for handle the login page. check userdetails to signin.
+def signin():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -190,14 +190,20 @@ def login():
 
             if check_password_hash(rows[0][0], password): # convert hash password to regular type and check similarity.
             #session['user_id'] = user.id
-            #flash('Login successful', 'success')
-                return render_template('home.html')
+            #flash('Sign in successful', 'success')
+                connection.connect()
+                cursor = connection.cursor()
+                cursor.execute("SELECT * FROM degree ORDER BY d_id")
+                value = cursor.fetchall()
+                cursor.close()
+                connection.close()
+                return render_template("testindex.html", data=value)
             else:
-                return render_template('login.html', error='Username or Password is wrong')
+                return render_template('signin.html', error='Username or Password is wrong')
         else:
-            return render_template('login.html', error='Username or Password is wrong')
+            return render_template('signin.html', error='Username or Password is wrong')
 
-    return render_template('login.html')
+    return render_template('signin.html')
 
 
 @app.route('/logout') # logout user

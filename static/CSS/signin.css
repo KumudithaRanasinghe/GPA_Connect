@@ -1,0 +1,112 @@
+@import url("main.css");
+
+
+* {
+  margin: 0px 0 0 0 ;
+  padding: 0;
+  margin-bottom: 0px;
+  align-items: center;
+}
+
+.grid{
+ float: left;
+  width: 70%;
+  margin-top: 50px ;
+  margin-bottom: 50px;
+
+}
+
+.g-col-6{
+  
+  padding: 2%;
+  
+}
+.text-head{
+  font-size: xx-large;
+  font-family: Poppins, sans-serif;
+  font-weight: 700;
+  color: var(--primary-color);
+  padding-bottom: 50px;
+}
+
+.table-container {
+  border-radius: 50px;
+  overflow: hidden;
+  background-color: var(--table-back);
+  margin: 20px;
+  padding: 20px;
+  width: 70%;
+  margin: 0 auto; 
+  text-align: center;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+}
+
+.image-container {
+  width: 50%;
+  float: right;
+  box-sizing: border-box;
+}
+
+table {
+  width: 50%;
+  float: left;
+  border-collapse: collapse;
+  text-align: center; /* Horizontal alignment */
+}
+
+th, td {
+  padding: 8px;
+  vertical-align: middle; /* Vertical alignment */
+}
+
+
+.input-text{
+  padding: 8px;
+  margin: 15px 0;
+  border: none;
+  border-radius: 50px;
+  overflow: hidden;
+  background-color: #ffffff;
+  color: #161616;
+  width: 100%;
+}
+
+
+/* selected degree button style */
+.selected_degree {
+  border: none;
+  border-radius: 50px; /* Adjust the border-radius as needed */
+  background-color: var(--btn_back);
+  padding: 10px 20px; /* Adjust padding as needed */
+  cursor: default;
+  width: fit-content;
+  
+  
+}
+
+.icon{
+  box-sizing: border-box;
+  width: 70%;
+}
+
+
+.btn-submit {
+  border: none;
+  border-radius: 50px; /* Adjust the border-radius as needed */
+  background-color: var(--secondary-color);
+  padding: 10px 30px; /* Adjust padding as needed */
+  cursor: pointer;
+  margin: 30px;
+  font-family: Poppins, sans-serif;
+}
+
+
+.paragraph {
+  text-align: center;
+  margin-top: 20px; /* Adjust margin as needed */
+  font-family: Arial, sans-serif;
+  font-size: 16px; /* Adjust font size as needed */
+  color: #333; /* Adjust text color as needed */
+  margin-right: 100px;
+
+}

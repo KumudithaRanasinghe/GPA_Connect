@@ -40,7 +40,7 @@
   text-align: left;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
 
-  
+
 }
 
 
@@ -48,7 +48,7 @@
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  color: white; /* Text color for contrast */
+  align-items: center;
 }
 
 .table-light-blue tr {
@@ -102,6 +102,7 @@ input {
   padding: 10px 20px; /* Adjust padding as needed */
   cursor: default;
   width: fit-content;
+  
   
 }
 
@@ -170,7 +171,6 @@ box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.4);
   max-height: 100%;
   display: block;
 }
-
 
 .btnFinalGpa{
   padding: 1rem;
