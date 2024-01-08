@@ -179,9 +179,14 @@ function checkItemAvailability(itemId) { //check rows availability. prevent from
 
         <!--  table start-->
         <section>
-        <form action="/unknown" method="post">
+        <form action="/unknown" method="post">     
         <div class="grid" id="gridContainer">
             <div class="g-col-6">
+
+                   
+                <p name="degree" class="job_explore_btn"><span class="txt">Selected Digree Program :</span> {{ degree[0][0] }}</p>
+
+            
                 <div class="table-container" >
                     <table class="table" id="table1" >
                         <thead>
@@ -465,6 +470,7 @@ function checkItemAvailability(itemId) { //check rows availability. prevent from
         newSemesterDiv.innerHTML = `
             <div class="table-container" id="tableContainer">
                 <table class="table" id="${tableId}">
+                    <span class="sem_no" id="sem_no" >Semester ${gridContainer.children.length + 1} </span>
                     <thead>
                         <tr>
                             <th scope="col">#</th>

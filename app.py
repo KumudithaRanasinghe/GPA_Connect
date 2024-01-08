@@ -45,9 +45,12 @@ def testcal_gpa():
         # Execute the second query
         cursor.execute("SELECT * FROM grade")
         grades = cursor.fetchall()
-        
 
-        return render_template("/testcalgpa.html", modules=modules, grades=grades)
+        cursor.execute("SELECT d_name FROM degree WHERE d_id=%s",(degree_id,))
+        degree = cursor.fetchall()
+        
+        return render_template("/testcalgpa.html",degree=degree, modules=modules, grades=grades)
+    
     except Exception as e:
         # Log the exception or handle it appropriately
         print(f"An error occurred: {e}")
