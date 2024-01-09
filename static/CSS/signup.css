@@ -12,10 +12,9 @@
  float: left;
   width: 70%;
   margin-top: 50px ;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 
 }
-
 
 .g-col-6{
   
@@ -43,22 +42,30 @@
 }
 
 .image-container {
-  width: 45%;
+  width: 30%;
   float: right;
   box-sizing: border-box;
-  margin-top: 100px;
+  margin-top: 200px;
+
 }
 
 table {
-  width: 50%;
+  width: 55%;
   float: left;
   border-collapse: collapse;
   text-align: center; /* Horizontal alignment */
+  margin-left: 20px;
 }
 
 th, td {
   padding: 8px;
-  vertical-align: middle; /* Vertical alignment */
+  vertical-align: middle;
+}
+
+.agreement{
+  font-size: smaller;
+  text-align: left;
+  padding-top: 15px;
 }
 
 
@@ -83,7 +90,6 @@ th, td {
   width: fit-content;
   cursor: default;
 }
-
 
 .icon{
   box-sizing: border-box;

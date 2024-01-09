@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/signup.css') }}">
+    <!-- Bootstrap CSS - CDN -->
+    <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
+          crossorigin="anonymous">
+    <title>signup</title>
+    <script>
+      function validateForm() {
+
+        var username = document.getElementById("username").value;
+        var name = document.getElementById("name").value;
+        var password = document.getElementById("password").value;
+        var r_password = document.getElementById("r_password").value;
+        var student_id = document.getElementById("student_id").value;
+
+        var textError = document.getElementById("signup-validate-section");
+
+          var minLength = 8;
+          var st_idLength = 5;
+       
+          if (username.length < minLength) {
+
+            textError.innerHTML = `<span id="validate_error" class="error-row">* Username too short!</span>`;  
+            return false;
+
+          }
+          if(name.length < minLength){
+
+            textError.innerHTML = `<span id="validate_error" class="error-row">* Name is too short!</span>`; 
+            return false;
+
+          }
+          if(student_id.length < st_idLength || student_id.length > st_idLength){
+
+            textError.innerHTML = `<span id="validate_error" class="error-row">* Student id is wrong</span>`; 
+            return false;
+
+          }
+          if(password != r_password){
+
+            textError.innerHTML = `<span id="validate_error" class="error-row">* Password did not match</span>`; 
+            return false;
+
+          }
+          if(password.length < minLength){
+
+            textError.innerHTML = `<span id="validate_error" class="error-row">* Password is too short!</span>`; 
+            return false;
+          }
+          
+              textError.innerHTML = ``;
+              return true; 
+          
+
+      }
+  </script>
+
+</head>
+<body>
+    <div class="main-wrapper">
+    <!-- nav bar start -->
+    <header>
+      {% include 'nav.html' %}
+    </header>
+    <!-- nav bar end -->
+    <!-- hero section start -->
+    
+      <!-- Your code Start here -->
+      {% block content %}
+
+     
+  <div class="grid" id="gridContainer">
+    <div class="g-col-6">
+
+      <div class="table-container">
+        <span class="text-head">Welcome!</span>
+        <table>
+          <form action="/signup" method="post" onsubmit="return validateForm()">
+          
+            <div>
+              <tr>
+                <td colspan="2" id="signup-validate-section">{% if error%}<span id="validate_error" class="error-row">{{error}}</span>{% endif %}</td>
+              </tr>
+                  <tr>
+                    <td><label for="name"><img src="{{url_for('static', filename='Images/name.png')}}" alt="name" class="icon"></label></td>
+                    <td><input type="text" id="name" name="name" class="input-text" placeholder="Name" required></td>
+                  </tr>
+                  <tr>
+                    <td><label for="username"><img src="{{url_for('static', filename='Images/User.png')}}" alt="username" class="icon"></label></td>
+                    <td><input type="text" id="username" name="username" class="input-text" placeholder="Username" required></td>
+                  </tr>
+                  <tr>
+                    <td><label for="studentid"><img src="{{url_for('static', filename='Images/id.png')}}" alt="student id" class="icon"></label></td>
+                    <td><input type="number" id="student_id" name="student_id" class="input-text" placeholder="Student id" required></td>
+                  </tr>
+                  <tr>
+                    <td><label for="email"><img src="{{url_for('static', filename='Images/mail.png')}}" alt="mail" class="icon"></label></td>
+                    <td><input type="email" id="email" name="email" class="input-text" placeholder="E-mail" required></td>
+                  </tr>
+                  <tr>
+                    <td><label for="password"><img src="{{url_for('static', filename='Images/Padlock.png')}}" alt="password" class="icon"></label></td>
+                    <td><input type="password" id="password" name="password" class="input-text" placeholder="Password" required></td>
+                  </tr>
+                  <tr>
+                    <td><label for="password"><img src="{{url_for('static', filename='Images/repeat_password.png')}}" alt="repeat_password" class="icon"></label></td>
+                    <td><input type="password" id="r_password" name="r_password" class="input-text" placeholder="Confirm password" required></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" id="agreement" name="agreement" class="input-text" required></td>
+                    <td><p class="agreement">By clicking on ‘sign up’, you’re agreeing to the GPA Connect Terms of Service and Privacy Policy</p></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><button type="submit" id="submit" class="btn-submit">Sign Up</button></td>  
+                  </tr>     
+            </div>
+              
+          </form>
+      </table>
+
+        <div>
+          <img src="{{url_for('static', filename='Images/Animation_tall.png')}}" alt="child-short" class="image-container">
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+      {% endblock %}
+
+
+      <!-- Your code Start here -->
+    
+    <!-- hero section end -->
+    <!-- footer start -->
+    {% include 'footer.html' %}
+        
+  <!-- footer end -->
+</div>
+    <!-- Bootstrap JS - CDN -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+      integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+      crossorigin="anonymous">
+    </script>
+</body>
+</html>

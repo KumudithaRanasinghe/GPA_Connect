@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for, flash,jsonify
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from werkzeug.security import generate_password_hash, check_password_hash #generate password to hash type to save database. sequre option
 from logic import Logic
 import mysql.connector
 import re
+from flask_session import Session
 
 config = {
     'user': 'root',
@@ -12,12 +13,19 @@ config = {
     'raise_on_warnings': True
 }
 
+
 # Create a connection and cursor
 connection = mysql.connector.connect(**config)
 cursor = connection.cursor()
 
 app = Flask(__name__)
 #landing page
+
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
+
+
 @app.route('/')
 def index():
     connection.connect()
@@ -60,7 +68,7 @@ def testcal_gpa():
         connection.close()
 
 @app.route('/credit', methods=['GET', 'POST']) # handle ajax
-def fetch():
+def credit():
 
     if request.method == 'POST':
         m_id = request.form['m_id']
@@ -115,7 +123,10 @@ def setGpa():
 def signup():
 
     if request.method == 'POST':
+        name = request.form['name']
         username = request.form['username']
+        student_id = request.form['student_id']
+        email = request.form['email']
         password = request.form['password']
         repeat_password = request.form['r_password']
 
@@ -133,32 +144,46 @@ def signup():
 
             if rows[0][0] > 0: #check the data availability.. this query return 0 or 1. if username awailable count as 1. 
                 
-                return redirect(url_for('login')) #redirect to login page
+                # return redirect(url_for('signin')) #redirect to login page
+                return render_template('signup.html', error='* Signup unsuccessful. Username already in use')
             else:
-                username = request.form['username']
-                password = request.form['password']
 
-                hashed_password = generate_password_hash(password, method='pbkdf2:sha256', salt_length=8) #generate hashed password to save on database
+                connection.connect()
 
-                query = "INSERT INTO user (u_name, u_password) VALUES (%s, %s)" #insert registration data to user table.
-                values = (username, hashed_password)
+                read_q = "SELECT COUNT(u_id) FROM user where u_id= '"+student_id+"'"
 
-                try:
-                    connection.connect()
-                    cursor = connection.cursor()
-                    cursor.execute(query, values)
-                    connection.commit()
-                    return redirect(url_for('home')) # home page means the after load page signup. login page recomended to login to user again
-                                                        # try exp used for handle if have error on this process
+                cursor = connection.cursor()
+                cursor.execute(read_q)
+                rows = cursor.fetchall()
+                cursor.close()
+                connection.close()
+
+                if rows[0][0] > 0:
                 
-                except Exception as e:
-                    return f"Error: {str(e)}"
+                
+                    return render_template('signup.html', error='* Signup unsuccessful. Wrong student id')
+                else:
+                
+                    hashed_password = generate_password_hash(password, method='pbkdf2:sha256', salt_length=8) #generate hashed password to save on database
+
+                    query = "INSERT INTO user (u_id, u_name, name, email, gpa, d_id, user_type, u_password) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)" #insert registration data to user table.
+                    values = (student_id, username, name, email, 0, 0, "student", hashed_password)
+
+                    try:
+                        connection.connect()
+                        cursor = connection.cursor()
+                        cursor.execute(query, values)
+                        connection.commit()
+                        # return redirect(url_for('signin')) # home page means the after load page signup. login page recomended to login to user again
+                                                            # try exp used for handle if have error on this process
+                        return render_template('signin.html', error='* Signup successfully')
+                    
+                    except Exception as e:
+                        return f"Error: {str(e)}"
         else:
-            return render_template('signup.html', error='password not matching')
-    
+            return render_template('signup.html', error='* Password not matching')
 
     return render_template('signup.html')   
-
 
 
 
@@ -168,7 +193,7 @@ def signin():
         username = request.form['username']
         password = request.form['password']
 
-        read_q = "SELECT u_name FROM user where u_name= '"+username+"';" # check if have username on database user table
+        read_q = "SELECT COUNT(u_name) FROM user where u_name= '"+username+"';" # check if have username on database user table
 
         connection.connect()
         cursor = connection.cursor()
@@ -177,7 +202,7 @@ def signin():
         cursor.close()
         connection.close()
 
-        if rows[0][0]==username: #if username similar to user entered username.. then,
+        if rows[0][0]==1: #if username similar to user entered username.. then,
 
             read_q = "SELECT u_password FROM user WHERE u_name = '"+username+"';" #..check the password
 
@@ -189,8 +214,7 @@ def signin():
             connection.close()
 
             if check_password_hash(rows[0][0], password): # convert hash password to regular type and check similarity.
-            #session['user_id'] = user.id
-            #flash('Sign in successful', 'success')
+                session['username'] = username;
                 connection.connect()
                 cursor = connection.cursor()
                 cursor.execute("SELECT * FROM degree ORDER BY d_id")
@@ -199,16 +223,16 @@ def signin():
                 connection.close()
                 return render_template("testindex.html", data=value)
             else:
-                return render_template('signin.html', error='Username or Password is wrong')
+                return render_template('signin.html', error='* Username or Password is wrong')
         else:
-            return render_template('signin.html', error='Username or Password is wrong')
+            return render_template('signin.html', error='* User not found. please register or check username')
 
     return render_template('signin.html')
 
 
 @app.route('/logout') # logout user
 def logout():
-    #session.pop('user_id', None)
+    session.pop('username', None)
     flash('You have been logged out', 'info')
     return redirect(url_for('index'))
 
@@ -222,6 +246,8 @@ def aboutus():
 def faq():
     return render_template("faq.html")
     
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

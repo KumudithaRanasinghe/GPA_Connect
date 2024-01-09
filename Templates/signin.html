@@ -12,7 +12,8 @@
           rel="stylesheet" 
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
           crossorigin="anonymous">
-    <title>login</title>
+    <title>signin</title>
+  
 </head>
 <body>
     <div class="main-wrapper">
@@ -26,31 +27,32 @@
       <!-- Your code Start here -->
       {% block content %}
 
-     
   <div class="grid" id="gridContainer">
+ 
     <div class="g-col-6">
-      
-        
-              
+
       <div class="table-container">
+
         <span class="text-head">Welcome Back!</span>
         <table>
           <form action="/signin" method="post">
           
-            <div>
+            <div> 
+                  <tr>
+                    <td colspan="2">{% if error%}<span id="username_error" class="error-row">{{error}}</span>{% endif %}</td>
+                  </tr>
                   <tr>
                     <td><label for="username"><img src="{{url_for('static', filename='Images/User.png')}}" alt="username" class="icon"></label></td>
-                    <td><input type="text" id="username" name="username" class="input-text" placeholder="Username" required></td>
+                    <td><input type="text" id="username" name="username" class="input-text" placeholder="Username" required></td>          
                   </tr>
                   <tr>
                     <td><label for="password"><img src="{{url_for('static', filename='Images/Padlock.png')}}" alt="password" class="icon"></label></td>
-                    <td><input type="password" id="password" name="password" class="input-text" placeholder="Password" required></td>
+                    <td><input type="password" id="password" name="password" class="input-text" placeholder="Password" required></td> 
                   </tr>
                   <tr>
                     <td colspan="2"><button type="submit" id="submit" class="btn-submit">Sign In</button></td>  
                   </tr>     
-            </div>
-              
+            </div>   
           </form>
       </table>
 
@@ -61,7 +63,6 @@
       </div>
     </div>
   </div>
-
       {% endblock %}
 
 
