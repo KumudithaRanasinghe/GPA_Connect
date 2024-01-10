@@ -1,36 +1,17 @@
 
 
-header {
-background-color: #333;
-color: #fff;
-text-align: center;
-padding: 10px;
-} 
-button {
-margin: 0;
-padding: 0;
-border: none;
-font-size: 1rem;
-cursor: pointer;
-}
-.my-button {
-background-color: #2b05d3; 
-color: rgb(232, 232, 232); 
-padding: 10px 20px; 
-border-radius: 5px; 
-font-weight: bold; 
-}       
+    
 .load-font{   
-font-family: CustomFontRegular;
+font-family: Poppins, sans-serif;
 margin-left: 15px;
 }     
 .card-dev{
-background-color: rgba(246, 241, 241, 0.896);
-width: 350px;
-height: 250px;
-box-shadow: 0 0 10px 0 rgba(198, 213, 231, 0.2);
-border-radius: 10px;
-padding: 5px;
+background-color: rgb(235, 251, 255);
+width: 450px;
+height: 450px;
+box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+border-radius: 20px;
+padding: 10px;
 margin: 20px;
 
 }
@@ -44,21 +25,47 @@ display: flex;
 flex-direction: column;
 justify-content: space-around;
 }
-.curve{
-border-radius: 10px;
-transition: 200ms;
-}
-.center{
-display: flex;
-justify-content: center;
-}
-.curve:hover{
+
+.circular-image:hover{
     scale: 101%;
 }
-footer {
-text-align: center;
-padding: 10px;
-background-color: #333;
-color: #fff;
+.img{
+    margin: 20px;
+    box-sizing: border-box;
+    width: 30%;
+    border-radius: 20px;
+  }
+.space{
+    margin-top: 50px;
 }
 
+
+.circular-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 20px auto;
+    transition: 300ms;
+}
+
+.circular-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    display: block;
+    
+}
+.para{
+    text-align: center;
+}
+.description{
+    margin: 30px;
+    text-align: center;
+}
+.card-heading{
+    font-size: x-large;
+    font-weight: bold;
+    text-align: center;
+    
+}
