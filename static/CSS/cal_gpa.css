@@ -67,18 +67,6 @@
   overflow: hidden;
 }
 
-/* .table th {
-  background: yellow; /* Background color for header cells 
-} */
-
-
-
-
-
-
-
-
-
 /* Input styles */
 input {
   width: 100%;
@@ -90,16 +78,17 @@ input {
   text-decoration: none;
   background-color: transparent;
   border: none;
-  color: inherit; /* Use the color of the parent element */
-  cursor: pointer; /* Show pointer cursor on hover for better user experience */
+  color: inherit; 
+  cursor: pointer;
 }
 
 /* selected degree button style */
 .selected_degree {
+  margin: 50px auto; 
   border: none;
-  border-radius: 50px; /* Adjust the border-radius as needed */
-  background-color: var(--btn_back);
-  padding: 10px 20px; /* Adjust padding as needed */
+  border-radius: 50px; 
+  background-color: var(--primary-color);
+  padding: 10px 20px; 
   cursor: default;
   width: fit-content;
   

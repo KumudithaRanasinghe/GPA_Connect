@@ -63,6 +63,7 @@ header {
 
 .course-row button{
   position: relative;
+  justify-content: center;
   display: inline-flex;
   margin-top: 10px;
   margin-left: 10px;
@@ -72,19 +73,7 @@ header {
   border: none;
   padding: 5px 20px;
   border-radius: 20px;
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
 }
-
-.course-row .select-course{
-  margin-left: 1.5rem;
-  width: 20rem;
-  height: 2.5rem;
-  border: .1rem solid var(--secondary-color);
-  border-radius: 1.5rem;
-  background: var(--btn_back);
-}
-
-
-
 
 /* hero section styles end */
