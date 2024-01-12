@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 27, 2023 at 05:49 AM
+-- Generation Time: Jan 12, 2024 at 02:05 PM
 -- Server version: 8.0.21
 -- PHP Version: 7.3.21
 
@@ -393,15 +393,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   `user_type` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
   `u_password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`u_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28237 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=94301 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`u_id`, `u_name`, `name`, `email`, `gpa`, `d_id`, `user_type`, `u_password`) VALUES
-(28234, 'unknownTester123', 'madushanka', 'unknown@gmail.com', 0, 3, 'student', 'pbkdf2:sha256:600000$LMi4Ysxi$98148a7358ca951a875573603ecdc4113f5e50ab4c401abdcea17a90c774eac2'),
-(28235, 'dushan6693', 'dushan', 'dushanmadushankabeligala9@gmail.com', 3.03, 2, 'student', 'pbkdf2:sha256:600000$xoeteZgy$04f98be32ae79b48c3659ca53af01b65be5f2529a7ee233a5bd251daa415c63c'),
+(28230, 'Saman12', 'saman kumara', 'saman123@gmail.com', 0, 0, 'student', 'pbkdf2:sha256:600000$wfukpEIu$9aeff93714e0d6650216d3466cf4c8e4907597dce4c89165ed23caf73ca827c1'),
+(28232, 'dushan6693', 'dushan', 'saman123@gmail.com', 0, 0, 'student', 'pbkdf2:sha256:600000$vjkgGV84$b9b96b76f3ed71da175551ce9269113c619f196cb39629d1a9a1e5a2c7e41dcf'),
 (28236, 'admin', '', 'admin123@nsbm.lk', 0, 0, 'admin', 'pbkdf2:sha256:600000$I1bfiXWr$e78c975b869433d8e93f624f598c6fa3ca0c12e354dd3c2511c438123531c820');
 
 -- --------------------------------------------------------
