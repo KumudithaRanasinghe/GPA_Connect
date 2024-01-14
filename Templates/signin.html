@@ -39,7 +39,12 @@
           
             <div> 
                   <tr>
-                    <td colspan="2">{% if error%}<span id="username_error" class="error-row">{{error}}</span>{% endif %}</td>
+                    <td colspan="2">
+                      {% if error%}
+                        <span id="username_error" class="error-row">
+                          {{error}}
+                        </span>
+                      {% endif %}</td>
                   </tr>
                   <tr>
                     <td><label for="username"><img src="{{url_for('static', filename='Images/User.png')}}" alt="username" class="icon"></label></td>

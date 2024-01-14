@@ -134,10 +134,13 @@ def signup():
 
             connection.connect()
 
-            read_q = "SELECT COUNT(*) FROM user where u_name= '"+username+"'" #check if username available on database then redirect to login
+            # read_q = """ "SELECT COUNT(*) FROM user where u_name= "'+username+'" """ #check if username available on database then redirect to login
+            read_q = "SELECT COUNT(*) FROM user WHERE u_name = %s"
+            
 
             cursor = connection.cursor()
-            cursor.execute(read_q)
+            # cursor.execute(read_q)
+            cursor.execute(read_q, (username,))
             rows = cursor.fetchall()
             cursor.close()
             connection.close()
@@ -175,8 +178,8 @@ def signup():
                         cursor.execute(query, values)
                         connection.commit()
                         # return redirect(url_for('signin')) # home page means the after load page signup. login page recomended to login to user again
-                                                            # try exp used for handle if have error on this process
-                        return render_template('signin.html', error='* Signup successfully')
+                        #                                     # try exp used for handle if have error on this process
+                        return render_template('signup.html', error='* Signup successfully')
                     
                     except Exception as e:
                         return f"Error: {str(e)}"

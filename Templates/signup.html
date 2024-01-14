@@ -29,31 +29,46 @@
        
           if (username.length < minLength) {
 
-            textError.innerHTML = `<span id="validate_error" class="error-row">* Username too short!</span>`;  
+            textError.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    * Username too short!
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                   </div>`;  
             return false;
 
           }
           if(name.length < minLength){
 
-            textError.innerHTML = `<span id="validate_error" class="error-row">* Name is too short!</span>`; 
+            textError.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    * Name is too short!
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                   </div>`; 
             return false;
 
           }
           if(student_id.length < st_idLength || student_id.length > st_idLength){
 
-            textError.innerHTML = `<span id="validate_error" class="error-row">* Student id is wrong</span>`; 
+            textError.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    * Student id is wrong
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                   </div>`; 
             return false;
 
           }
           if(password != r_password){
 
-            textError.innerHTML = `<span id="validate_error" class="error-row">* Password did not match</span>`; 
+            textError.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    * Password did not match
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                   </div>`; 
             return false;
 
           }
           if(password.length < minLength){
 
-            textError.innerHTML = `<span id="validate_error" class="error-row">* Password is too short!</span>`; 
+            textError.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    * Password is too short!
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                   </div>`; 
             return false;
           }
           
@@ -88,7 +103,13 @@
           
             <div>
               <tr>
-                <td colspan="2" id="signup-validate-section">{% if error%}<span id="validate_error" class="error-row">{{error}}</span>{% endif %}</td>
+                <td colspan="2" id="signup-validate-section">
+                  {% if error%}
+                    <span id="validate_error" class="error-row">
+                      {{error}}
+                    </span>
+                  {% endif %}
+                </td>
               </tr>
                   <tr>
                     <td><label for="name"><img src="{{url_for('static', filename='Images/name.png')}}" alt="name" class="icon"></label></td>

@@ -14,7 +14,7 @@
     <title>NSBM</title>
 </head>
 <body>
-    <div class="main-wrapper">
+<div class="main-wrapper">
     <!-- nav bar start -->
     <header>
       {% include 'nav.html' %} 
@@ -232,13 +232,14 @@
             <!--Row-->
 
             <div class="description">
-                
-                <img src = "{{url_for('static', filename='Images/R3.jpg')}}" class="img" alt="nsbm green university">
-                <p class="para">We are from NSBM Green University</p>
-          
-                <p class="para"><b>NSBM Green University</b> is the first ever green university in South Asia and sets an example for the whole South Asia by paving the way for environmental sustainability. The university is open for both national and international student community and it has turned a new chapter in Sri Lankan higher education.</p>
-                <p class="para">NSBM Green University is established under the Ministry of Education and it is renowned for its world-class academic offerings. This state-of-the-art university offers nationally and internationally recognized, UGC-approved degree programmes and foreign degree programmes in four faculties: Business, Computing, Engineering, Science, and Postgraduate Studies.</p>
-            
+                <div class="image-section col-sm-12 col-lg-12 col-xl-6 pb-4 pb-xl-0">
+                    <img src = "{{url_for('static', filename='Images/R3.jpg')}}" class="img" alt="nsbm green university">
+                </div>
+                <div class="description-section col-sm-12 col-lg-12 col-xl-6">
+                    <h3>We are from NSBM Green University</h3>
+                    <p class="para"><strong>NSBM Green University</strong> is the first ever green university in South Asia and sets an example for the whole South Asia by paving the way for environmental sustainability. The university is open for both national and international student community and it has turned a new chapter in Sri Lankan higher education.</p>
+                    <p class="para">NSBM Green University is established under the Ministry of Education and it is renowned for its world-class academic offerings. This state-of-the-art university offers nationally and internationally recognized, UGC-approved degree programmes and foreign degree programmes in four faculties: Business, Computing, Engineering, Science, and Postgraduate Studies.</p>
+                </div>
             </div>
 
           
