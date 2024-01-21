@@ -6,12 +6,13 @@ margin-left: 15px;
 }     
 .card-dev{
 background-color: rgb(235, 251, 255);
-width: 450px;
+width: 400px;
 height: 450px;
-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-border-radius: 20px;
-padding: 10px;
-margin: 20px;
+font-size: small;
+box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.3);
+border-radius: 10px;
+padding: 8px;
+margin: 45px;
 
 }
 .row-dev{
@@ -31,7 +32,7 @@ justify-content: space-around;
 .img{
     margin: 20px;
     box-sizing: border-box;
-    width: 30%;
+    width: 20%;
     border-radius: 20px;
   }
 .space{
@@ -40,8 +41,8 @@ justify-content: space-around;
 
 
 .circular-image {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     overflow: hidden;
     margin: 20px auto;
@@ -79,8 +80,25 @@ justify-content: space-around;
     margin-top: 3rem;
   }
 .card-heading{
-    font-size: x-large;
+    font-size:large;
     font-weight: bold;
     text-align: center;
     
 }
+.social{
+    width: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    display: block;
+    transition: 300ms;
+}
+.social:hover{
+    scale: 105%;
+    cursor: pointer;
+}
+.social-align{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    }

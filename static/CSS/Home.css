@@ -49,12 +49,13 @@ header {
   align-items: center;
   justify-content: center;
   background: var(--table-back);
-  border-radius: 50px;
+  border-radius: 30px;
   overflow: hidden;
   padding: 50px 40px;
   width: 100%;
   margin: 0 auto; 
   margin-bottom: 3rem;
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.4);
   text-align: left;
 }
 .home-content .course-row{
