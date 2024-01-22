@@ -31,7 +31,7 @@
 }
 
 .table-container {
-  border-radius: 50px;
+  border-radius: 30px;
   overflow: hidden;
   background-color: var(--table-back);
   margin: 20px;
@@ -39,7 +39,7 @@
   width: 70%;
   margin: 0 auto; 
   text-align: center;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.4);
 }
 
 .image-container {

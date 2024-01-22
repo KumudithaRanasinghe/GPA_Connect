@@ -233,8 +233,8 @@ def signin():
     return render_template('signin.html')
 
 
-@app.route('/logout') # logout user
-def logout():
+@app.route('/signout') # logout user
+def signout():
     session.pop('username', None)
     flash('You have been logged out', 'info')
     return redirect(url_for('index'))

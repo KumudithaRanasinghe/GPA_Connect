@@ -34,14 +34,28 @@
                 <a class="nav-link" href="{{url_for('faq')}}">FAQ</a>
               </li>
             </ul>
-            <a href="/signup">
-              <button class="btn btn-secondary" type="button">Sign Up</button>
-            </a>
-            <a class="mx-1" href="/signin">
-              <button class="btn btn-outline-primary" type="button">
+
+            {% if 'username' in session %}
+              <p>Welcome, {{ session['username'] }}! <a class="mx-1" href="/signout">
+                <button class="btn btn-outline-primary" type="button">
+                Sign Out
+                </button>
+              </a></p>
+            {% else %}
+              <a href="/signup">
+                <button class="btn btn-secondary" type="button">Sign Up</button>
+              </a>
+              <a class="mx-1" href="/signin">
+                <button class="btn btn-outline-primary" type="button">
                 Sign In
-              </button>
-            </a>
+                </button>
+              </a>
+            {% endif %}
+
+
+
+
+            
           </div>
         </div>
       </nav>
