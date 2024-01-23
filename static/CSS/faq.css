@@ -1,19 +1,75 @@
-
 @import url("main.css");
 
-h1{
-    text-align: center;
-    font-size: 50px;
-    font-family: 'Roboto', sans-serif;
-    color: #27a2e9;
-    margin-top: 50px;
-    
-}
-h5{
-    text-align: center;
-    font-size: 20px;
-    font-family: 'Roboto', sans-serif;
-    color: #121a1f;
+.load-font{   
+font-family: Poppins, sans-serif;
+margin-left: 15px;
+}     
 
+
+.text-head{
+    font-size: xx-large;
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    color: var(--primary-color);
     
+  }
+
+.row-dev{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    justify-content: space-around;
+    }
+.column-dev{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    text-align: center;
 }
+  
+details{
+    border-radius: 10px;
+    background-color: #ececec;
+    font-size: medium;
+    text-align: left;
+    align-content: end;
+    margin: 20px;
+    font-size: small;
+    color: rgb(54, 54, 54);
+    box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.3);
+ 
+}
+summary {
+    padding: 10px;
+    list-style: none;
+    justify-content: space-between;  
+    transition: 300ms;
+    color: var(--text-primary-color);
+    font-size: medium;
+    padding-right: 10px;
+
+}
+  
+summary::-webkit-details-marker {
+    display: none;
+}
+  
+summary::before{
+    content: "\002B";
+    margin-left: 10px;
+    margin-right: 30px;
+    color: var(--secondary-color);
+}
+  
+details[open] summary {
+      border-bottom: 1px solid var(--secondary-color);
+      margin-bottom: 10px;
+}
+  
+details[open] summary::before{
+    content: "\00D7";
+}
+  
+  details[open] div{
+    padding: 5px;
+  }

@@ -1,21 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="/static/CSS/faq.css">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/faq.css') }}">
+    <!-- Bootstrap CSS - CDN -->
+    <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
+          crossorigin="anonymous">
+    <title>NSBM</title>
+ 
 </head>
 <body>
+<div class="main-wrapper">
+    <!-- nav bar start -->
+    <header>
+      {% include 'nav.html' %} 
+    </header>
+    <!-- nav bar end -->
+    <!-- hero section start -->
+    {% block content %}
+      <!-- Your code Start here -->
 
-  <h1>
-    Frequently Asked Questions<br>
-  </h1>
-  <h5>
-    Questions you might ask about Our service
-  </h5>
+    <main class="load-font">
 
-  
-  
+       <div class="row-dev">
+            <div class="column-dev">
+                <span class="text-head">Frequently Asked Questions</span>
+                <span>Questions you might ask about Our service</span>
+
+                <div class="container">
+                    
+                    <details>
+                    <summary>What is GPA Connect?</summary>
+                    <div>
+                        <p>GPA Connect is a web application created using Flask Python that helps users calculate<br>their Grade Point Average (GPA) easily.</p>
+                    </div>
+                  </details>
+                  <details>
+                    <summary>How does GPA Connect calculate GPA?</summary>
+                    <div>
+                        <p>GPA Connect uses the standard GPA calculation formula, where each grade is assigned a<br>corresponding point value. The overall GPA is then calculated by averaging these<br>point values.</p>
+                    </div>
+                  </details>
+                  <details>
+                    <summary>Which grading scale does GPA Connect use?</summary>
+                    <div>
+                        <p>GPA Connect supports the common 4.0 scale.</p>
+                    </div>
+                  </details>
+                  <details>
+                    <summary>Can I calculate GPA for a specific semester or academic year?</summary>
+                    <div>
+                        <p>Yes, GPA Connect allows users to input grades for individual courses, specific semesters, or<br>entire academic years for accurate GPA calculations.</p>
+                    </div>
+                  </details>
+                  <details>
+                    <summary>Is GPA Connect only for college or university students?</summary>
+                    <div>
+                        <p>No, GPA Connect can be used anyone. but we specially target the NSBM learning system.</p>
+                    </div>
+                  </details>
+                  <details>
+                    <summary>Can I save my GPA calculations for future reference?</summary>
+                    <div>
+                        <p>Unfortunately, GPA Connect doesn't currently support saving calculations. It is designed for<br>on-the-fly GPA calculations. However, you can take a screenshot or manually<br>record your GPA for future reference.</p>
+                    </div>
+                  </details>
+                  <details>
+                    <summary>Can I use GPA Connect without creating an account?</summary>
+                    <div>
+                        <p>You can calculate GPA without an account, but creating account allows you to find jobs related<br> to your degree program and GPA value, We recommend creating an account<br> for a personalized experience.</p>
+                    </div>
+                  </details>
+                  <details>
+                    <summary>Is my job search history stored on GPA Connect?</summary>
+                    <div>
+                        <p>GPA Connect does not store individual user job search histories or any data related to your GPA.<br>only save your account details only. The application prioritizes user <br>privacy, and job search data is not retained on the server.</p>
+                    </div>
+                  </details>
+                </div>
+
+            </div>
+        </div>
+        
+        
+            
+          
+    </main>
+      
+
+
+      <!-- Your code Start here -->
+    
+    <!-- hero section end -->
+    {% endblock %}
+    <!-- footer start -->
+    {% include 'footer.html' %}
+  <!-- footer end -->
+</div>
+    <!-- Bootstrap JS - CDN -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+      integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+      crossorigin="anonymous">
+    </script>
 </body>
 </html>
