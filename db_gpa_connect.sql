@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Jan 12, 2024 at 02:05 PM
--- Server version: 8.0.21
--- PHP Version: 7.3.21
+-- Host: 127.0.0.1
+-- Generation Time: Jan 24, 2024 at 06:51 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,12 +27,10 @@ SET time_zone = "+00:00";
 -- Table structure for table `degree`
 --
 
-DROP TABLE IF EXISTS `degree`;
-CREATE TABLE IF NOT EXISTS `degree` (
-  `d_id` int NOT NULL AUTO_INCREMENT,
-  `d_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`d_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `degree` (
+  `d_id` int(11) NOT NULL,
+  `d_name` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `degree`
@@ -50,12 +48,9 @@ INSERT INTO `degree` (`d_id`, `d_name`) VALUES
 -- Table structure for table `degree_module`
 --
 
-DROP TABLE IF EXISTS `degree_module`;
-CREATE TABLE IF NOT EXISTS `degree_module` (
-  `d_id` int NOT NULL,
-  `m_id` int NOT NULL,
-  KEY `DD` (`d_id`),
-  KEY `DDF` (`m_id`)
+CREATE TABLE `degree_module` (
+  `d_id` int(11) NOT NULL,
+  `m_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -155,8 +150,6 @@ INSERT INTO `degree_module` (`d_id`, `m_id`) VALUES
 (3, 1),
 (3, 2),
 (3, 3),
-(3, 4),
-(3, 4),
 (3, 5),
 (3, 6),
 (3, 7),
@@ -242,7 +235,8 @@ INSERT INTO `degree_module` (`d_id`, `m_id`) VALUES
 (4, 82),
 (4, 40),
 (4, 83),
-(4, 84);
+(4, 84),
+(3, 4);
 
 -- --------------------------------------------------------
 
@@ -250,14 +244,12 @@ INSERT INTO `degree_module` (`d_id`, `m_id`) VALUES
 -- Table structure for table `grade`
 --
 
-DROP TABLE IF EXISTS `grade`;
-CREATE TABLE IF NOT EXISTS `grade` (
-  `g_id` int NOT NULL AUTO_INCREMENT,
-  `g_symbol` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+CREATE TABLE `grade` (
+  `g_id` int(11) NOT NULL,
+  `g_symbol` varchar(50) NOT NULL,
   `g_point` float NOT NULL,
-  `marks_range` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`g_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `marks_range` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `grade`
@@ -283,13 +275,11 @@ INSERT INTO `grade` (`g_id`, `g_symbol`, `g_point`, `marks_range`) VALUES
 -- Table structure for table `module`
 --
 
-DROP TABLE IF EXISTS `module`;
-CREATE TABLE IF NOT EXISTS `module` (
-  `m_id` int NOT NULL AUTO_INCREMENT,
-  `m_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `m_credits` int NOT NULL,
-  PRIMARY KEY (`m_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `module` (
+  `m_id` int(11) NOT NULL,
+  `m_name` varchar(100) NOT NULL,
+  `m_credits` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `module`
@@ -382,18 +372,16 @@ INSERT INTO `module` (`m_id`, `m_name`, `m_credits`) VALUES
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `u_id` int NOT NULL AUTO_INCREMENT,
-  `u_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+CREATE TABLE `user` (
+  `u_id` int(11) NOT NULL,
+  `u_name` varchar(255) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(150) NOT NULL,
   `gpa` float NOT NULL,
-  `d_id` int NOT NULL,
-  `user_type` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
-  `u_password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`u_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=94301 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `d_id` int(11) NOT NULL,
+  `user_type` varchar(10) NOT NULL,
+  `u_password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
@@ -410,14 +398,12 @@ INSERT INTO `user` (`u_id`, `u_name`, `name`, `email`, `gpa`, `d_id`, `user_type
 -- Table structure for table `user_module_grade`
 --
 
-DROP TABLE IF EXISTS `user_module_grade`;
-CREATE TABLE IF NOT EXISTS `user_module_grade` (
-  `s_m_g_id` int NOT NULL AUTO_INCREMENT,
-  `s_id` int NOT NULL,
-  `m_id` int NOT NULL,
-  `g_id` int NOT NULL,
-  PRIMARY KEY (`s_m_g_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `user_module_grade` (
+  `s_m_g_id` int(11) NOT NULL,
+  `s_id` int(11) NOT NULL,
+  `m_id` int(11) NOT NULL,
+  `g_id` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_module_grade`
@@ -426,6 +412,81 @@ CREATE TABLE IF NOT EXISTS `user_module_grade` (
 INSERT INTO `user_module_grade` (`s_m_g_id`, `s_id`, `m_id`, `g_id`) VALUES
 (1, 28232, 1, 6),
 (2, 28230, 2, 7);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `degree`
+--
+ALTER TABLE `degree`
+  ADD PRIMARY KEY (`d_id`);
+
+--
+-- Indexes for table `degree_module`
+--
+ALTER TABLE `degree_module`
+  ADD KEY `DD` (`d_id`),
+  ADD KEY `DDF` (`m_id`);
+
+--
+-- Indexes for table `grade`
+--
+ALTER TABLE `grade`
+  ADD PRIMARY KEY (`g_id`);
+
+--
+-- Indexes for table `module`
+--
+ALTER TABLE `module`
+  ADD PRIMARY KEY (`m_id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`u_id`);
+
+--
+-- Indexes for table `user_module_grade`
+--
+ALTER TABLE `user_module_grade`
+  ADD PRIMARY KEY (`s_m_g_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `degree`
+--
+ALTER TABLE `degree`
+  MODIFY `d_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `grade`
+--
+ALTER TABLE `grade`
+  MODIFY `g_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `module`
+--
+ALTER TABLE `module`
+  MODIFY `m_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94301;
+
+--
+-- AUTO_INCREMENT for table `user_module_grade`
+--
+ALTER TABLE `user_module_grade`
+  MODIFY `s_m_g_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
