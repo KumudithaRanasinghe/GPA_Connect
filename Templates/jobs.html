@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Jobs</title>
+</head>
+<body>
+    <h1>Generated Job Opportunities</h1>
+    <div id="generatedContent">
+        <!-- The generated content will be inserted here -->
+        {{ generated_content|safe }}
+    </div>
+
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!-- Add script to update the generated content on page load -->
+    <script>
+        $(document).ready(function() {
+            $("#generatedContent").html('{{ generated_content|safe }}');
+        });
+    </script>
+</body>
+</html>

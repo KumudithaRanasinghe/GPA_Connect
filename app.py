@@ -4,6 +4,7 @@ from logic import Logic
 import mysql.connector
 import re
 from flask_session import Session
+import google.generativeai as genai
 
 config = {
     'user': 'root',
@@ -248,6 +249,27 @@ def aboutus():
 @app.route('/faq')
 def faq():
     return render_template("faq.html")
+
+#job explore page
+@app.route("/jobs", methods=['POST'])
+def jobs():
+    try:
+        if request.method == 'POST':
+            gpa = setGpa()
+            prompt = f"I have a GPA of {gpa}. What are the potential job opportunities for someone with this GPA?"
+            # print("Generate route accessed")
+            # print(request.get_json())
+
+            GOOGLE_API_KEY='AIzaSyCg_2OOxs6GSIm1cjDkNmgZbkdIzJC4NNg'
+
+            genai.configure(api_key=GOOGLE_API_KEY)
+
+            model = genai.GenerativeModel('gemini-pro')
+
+            response = model.generate_content(prompt)
+            return render_template('jobs.html', response=response)
+    except Exception as e:
+        print(f"An error occurred: {e}")
     
 
 
