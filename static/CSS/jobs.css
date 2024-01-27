@@ -1,0 +1,93 @@
+@import url("main.css");
+
+.load-font{   
+font-family: Poppins, sans-serif;
+margin-left: 15px;
+}     
+
+
+.text-head{
+    font-size: xx-large;
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-align: center;
+    
+}
+.sub-head{
+    font-size: medium;
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    text-align: center;
+    
+}
+
+.row-dev{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    margin-bottom: 20px;
+
+}
+
+.column-dev{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    
+}
+
+.main-description{
+    font-size: medium;
+    color: black;
+
+    background-color: #f0f8ff;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 15px;
+    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.title{
+    font-weight: 500;
+    font-size: medium;
+    color: var(--primary-color);
+
+    background-color: #fff5e8;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 15px;
+    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.2);
+ 
+}
+.industry{
+    font-size: medium;
+    color: black;
+
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 15px;
+    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.2);
+}
+.salary{
+    font-size: medium;
+    color: var(--secondary-color);
+    margin-left: 5px;
+    padding-left: 15px;
+}
+.job-description{
+    font-size: medium;
+    color: black;
+
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 15px;
+    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.2);
+}
+ul, li{
+    color: black;
+    font-size: medium;
+
+}

@@ -6,6 +6,8 @@ import re
 from flask_session import Session
 import google.generativeai as genai
 
+from IPython.display import Markdown
+
 config = {
     'user': 'root',
     'password': '',
@@ -55,7 +57,7 @@ def testcal_gpa():
         cursor.execute("SELECT * FROM grade")
         grades = cursor.fetchall()
 
-        cursor.execute("SELECT d_name FROM degree WHERE d_id=%s",(degree_id,))
+        cursor.execute("SELECT d_id,d_name FROM degree WHERE d_id=%s",(degree_id,))
         degree = cursor.fetchall()
         
         return render_template("/testcalgpa.html",degree=degree, modules=modules, grades=grades)
@@ -251,26 +253,44 @@ def faq():
     return render_template("faq.html")
 
 #job explore page
-@app.route("/jobs", methods=['POST'])
+@app.route("/jobs", methods=['GET'])
 def jobs():
     try:
-        if request.method == 'POST':
-            gpa = setGpa()
-            prompt = f"I have a GPA of {gpa}. What are the potential job opportunities for someone with this GPA?"
+        if request.method == 'GET':
+
+            degree_id = request.args.get('id')
+            gpa = request.args.get('gpa')
+
+            try:
+                connection.connect()
+                cursor = connection.cursor()
+      
+                cursor.execute("SELECT d_name FROM degree WHERE d_id=%s",(degree_id,))
+                degree_name = cursor.fetchall()
+
+            except Exception as e:
+       
+                print(f"An error occurred: {e}")
+            finally:
+       
+                cursor.close()
+                connection.close()
+
+            prompt = f"I have a GPA of {gpa} in degree {degree_name}. need structured details about the potential job opportunities with this GPA? Return html and should only include <div> and <br> tags with classes 'main-description, title, industry, salary, job-description'. include about gpa value and digree program to main-description. explain job by job in detail. minimum 250 words needed. do not use <h1>, <h2>, <h3> tags"
+            
             # print("Generate route accessed")
             # print(request.get_json())
 
             GOOGLE_API_KEY='AIzaSyCg_2OOxs6GSIm1cjDkNmgZbkdIzJC4NNg'
 
             genai.configure(api_key=GOOGLE_API_KEY)
-
             model = genai.GenerativeModel('gemini-pro')
 
             response = model.generate_content(prompt)
-            return render_template('jobs.html', response=response)
+               
+            return render_template('jobs.html', resp=response.text)
     except Exception as e:
         print(f"An error occurred: {e}")
-    
 
 
 if __name__ == '__main__':

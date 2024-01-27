@@ -3,23 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generated Jobs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/jobs.css') }}">
+    <!-- Bootstrap CSS - CDN -->
+    <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
+          crossorigin="anonymous">
+    <title>NSBM</title>
+  
 </head>
 <body>
-    <h1>Generated Job Opportunities</h1>
-    <div id="generatedContent">
-        <!-- The generated content will be inserted here -->
-        {{ generated_content|safe }}
-    </div>
+<div class="main-wrapper">
+    <!-- nav bar start -->
+    <header>
+      {% include 'nav.html' %} 
+    </header>
+    <!-- nav bar end -->
+    <!-- hero section start -->
+    {% block content %}
+      <!-- Your code Start here -->
 
-    <!-- Include jQuery library -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <main class="load-font">
 
-    <!-- Add script to update the generated content on page load -->
-    <script>
-        $(document).ready(function() {
-            $("#generatedContent").html('{{ generated_content|safe }}');
-        });
+       <div class="row-dev">
+            <div class="column-dev">
+                <span class="text-head">Your Dream Job Awaits</span>
+                <span class="sub-head">Explore In-Demand Positions Tailored to Your Skills and Aspirations</span>
+                <br>
+                <div id="cont"></div>
+
+                <script>
+                  
+                  var data = {{ resp | tojson }};
+            
+                  data = data.replace(/```/g, "");
+            
+                  // let main_description = new RegExp(`${'"main-description":'}(.*?)(?=${'",'})`,'g');
+                  // let title = new RegExp(`${'"title":'}(.*?)(?=${'",'})`,'g');
+                  // let industry = new RegExp(`${'"industry":'}(.*?)(?=${'",'})`,'g');
+                  // let salary = new RegExp(`${'"salary":'}(.*?)(?=${'",'})`,'g');
+                  // let job_description = new RegExp(`${'"job-description":'}(.*?)(?=${'",'})`,'g');
+                 
+                  // let md = data.match(main_description);
+                  // let t = data.match(title);
+                  // let i = data.match(industry);
+                  // let s = data.match(salary);
+                  // let jd = data.match(job_description);
+              
+                  // let out = t.map(match => match.replace('"title": "', ''));
+            
+                  
+                  // for (let value of out.values()) {
+            
+                  // console.log(value);
+                  // }
+            
+                  document.getElementById("cont").innerHTML=`${data}`;
+            
+              </script>
+            </div>
+        </div>
+            
+          
+    </main>
+      
+
+
+      <!-- Your code Start here -->
+    
+    <!-- hero section end -->
+    {% endblock %}
+    <!-- footer start -->
+    {% include 'footer.html' %}
+  <!-- footer end -->
+</div>
+    <!-- Bootstrap JS - CDN -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+      integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+      crossorigin="anonymous">
     </script>
 </body>
 </html>
