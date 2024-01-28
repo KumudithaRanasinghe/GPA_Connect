@@ -6,7 +6,7 @@ import re
 from flask_session import Session
 import google.generativeai as genai
 
-from IPython.display import Markdown
+# from IPython.display import Markdown
 
 config = {
     'user': 'root',
@@ -37,7 +37,7 @@ def index():
     value = cursor.fetchall()
     cursor.close()
     connection.close()
-    return render_template("testindex.html", data=value)
+    return render_template("index.html", data=value)
     
 
 #gpa calculation page
@@ -60,7 +60,7 @@ def testcal_gpa():
         cursor.execute("SELECT d_id,d_name FROM degree WHERE d_id=%s",(degree_id,))
         degree = cursor.fetchall()
         
-        return render_template("/testcalgpa.html",degree=degree, modules=modules, grades=grades)
+        return render_template("/calgpa.html",degree=degree, modules=modules, grades=grades)
     
     except Exception as e:
         # Log the exception or handle it appropriately
@@ -189,11 +189,19 @@ def signup():
         else:
             return render_template('signup.html', error='* Password not matching')
 
-    return render_template('signup.html')   
+    return render_template('signup.html')
+
+# #check user login
+# def checkUserLoggedIn():
+#     if 'LoggedIn' in session:
+#         return True
+#     else:
+#         return False
+   
 
 
-
-@app.route('/signin', methods=['GET', 'POST'])# this function for handle the login page. check userdetails to signin.
+# this function for handle the login page. check userdetails to signin.
+@app.route('/signin', methods=['GET', 'POST'])
 def signin():
     if request.method == 'POST':
         username = request.form['username']
@@ -227,7 +235,7 @@ def signin():
                 value = cursor.fetchall()
                 cursor.close()
                 connection.close()
-                return render_template("testindex.html", data=value)
+                return render_template("index.html", data=value)
             else:
                 return render_template('signin.html', error='* Username or Password is wrong')
         else:
@@ -235,8 +243,8 @@ def signin():
 
     return render_template('signin.html')
 
-
-@app.route('/signout') # logout user
+# logout user
+@app.route('/signout') 
 def signout():
     session.pop('username', None)
     flash('You have been logged out', 'info')

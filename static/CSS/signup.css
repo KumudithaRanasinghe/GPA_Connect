@@ -100,10 +100,11 @@ th, td {
 .btn-submit {
   border: none;
   border-radius: 50px; /* Adjust the border-radius as needed */
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   padding: 10px 30px; /* Adjust padding as needed */
   cursor: pointer;
-  margin: 30px;
+  margin: 10px;
+  width: 100%;
   font-family: Poppins, sans-serif;
 }
 
@@ -117,3 +118,24 @@ th, td {
   margin-right: 100px;
 
 }
+
+@media only screen and (max-width: 500px){
+  .grid{
+     width: 130%;
+     margin-top: 40px;
+
+  }
+  table{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+ .image-container {
+    width: 30%;
+    margin-top: 2px;
+  }
+
+}
+

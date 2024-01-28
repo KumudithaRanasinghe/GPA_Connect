@@ -194,7 +194,7 @@ function checkItemAvailability(itemId) { //check rows availability. prevent from
                         <thead>
                         <span class="sem_no" id="sem_no" >Semester 1 </span>
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">No</th>
                                 <th scope="col">Course</th>
                                 <th scope="col">Grade</th>
                                 <th scope="col">Credit</th>
@@ -428,18 +428,16 @@ function checkItemAvailability(itemId) { //check rows availability. prevent from
           </p>
           <div class="job_explore" >
             
-
-
           {% if 'username' in session %}
             <button class="job_explore_btn" onclick="findJob()">  
               
                 <span class="txt">Explore Jobs</span> 
             </button>
             {% else %}
-            <button class="job_explore_btn" disabled>  
-              
+            <button class="job_explore_btn">
+                <a class="nav-link" href="{{url_for('signup')}}">
                 <span class="txt">Explore Jobs</span> 
-                (Sign Up required)
+                (Sign In required)</a>  
             </button>
             
             {% endif %}
@@ -454,11 +452,36 @@ function checkItemAvailability(itemId) { //check rows availability. prevent from
                 if(gpa>0.1){
                     window.location.href = '/jobs?id={{ degree[0][0] }}&gpa='+gpa;
 
-                }else{
+                }
+                else{
                     alert("minimum GPA value is 0.2");
                 }
                 
         }
+    //     function findJob() {
+    //         var isLoggedIn = checkUserLoggedIn(); // Assuming you have a function to check user login status
+
+    //         if (isLoggedIn) {
+    //             var gpa = document.getElementById('finalGpa').innerText;
+    //             if (gpa > 0.1) {
+    //                 window.location.href = '/jobs?id={{ degree[0][0] }}&gpa=' + gpa;
+    //             } else {
+    //                 alert("Minimum GPA value is 0.2");
+    //             }
+    //         } else {
+    //             // Redirect to signup page if user is not logged in
+    //             window.location.href = '/signup';
+    //         }
+    //     }
+
+    // function checkUserLoggedIn() {
+    //     var LoggedIn = sessionStorage.getItem('LoggedIn');
+
+    //     // Convert string to boolean
+    //     LoggedIn = LoggedIn === 'true';
+    //     return LoggedIn;
+    // }
+
 
         </script>
           
@@ -504,7 +527,7 @@ function checkItemAvailability(itemId) { //check rows availability. prevent from
                     <span class="sem_no" id="sem_no" >Semester ${gridContainer.children.length + 1} </span>
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col">No</th>
                             <th scope="col">Course</th>
                             <th scope="col">Grade</th>
                             <th scope="col">Credit</th>

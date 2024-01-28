@@ -94,10 +94,11 @@ th, td {
 .btn-submit {
   border: none;
   border-radius: 50px; /* Adjust the border-radius as needed */
-  background-color: var(--secondary-color);
-  padding: 10px 30px; /* Adjust padding as needed */
+  background-color: var(--primary-color);
+  padding: 10px; /* Adjust padding as needed */
   cursor: pointer;
-  margin: 30px;
+  margin: 10px;
+  width: 100%;
   font-family: Poppins, sans-serif;
 }
 
@@ -111,3 +112,45 @@ th, td {
   margin-right: 100px;
 
 }
+
+@media only screen and (max-width: 1280px){
+  .grid{
+     width: 100%;
+     margin-top: 50px ;
+     margin-bottom: 30px;
+  }
+  table{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+  .image-container {
+    width: 45%;
+    float: right;
+    box-sizing: border-box;
+    margin-top: 10px;
+  }
+}
+@media only screen and (max-width: 500px){
+  
+  
+  table{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  img .image-container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+  }
+
+}
+
+
+
+

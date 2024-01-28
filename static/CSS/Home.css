@@ -78,3 +78,15 @@ header {
 }
 
 /* hero section styles end */
+@media only screen and (max-width: 1280px) {
+  .course-row button{
+    margin: 8px auto;
+
+    width: 100%;
+  }
+  .home-content{
+    padding: 2rem;
+  }
+
+  
+}

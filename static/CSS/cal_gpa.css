@@ -13,7 +13,7 @@
 /* Add  styling here */
 
 .grid{
- float: left;
+  float: left;
   width: 70%;
   margin-top: 50px ;
   margin-bottom: 50px;
@@ -241,4 +241,50 @@ overflow: hidden;
 padding: 1.0%;
 border: 2px solid var(--secondary-color);
 background-color: rgba(0, 163, 255, 0.2);
+}
+
+@media only screen and (max-width: 1280px){
+
+  .grid{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .table-container{
+    margin: 10px;
+    padding: 30px;
+    width: 100%;
+  }
+  .cal_circle{
+    margin: 10px;
+    padding: 30px;
+    display: flex;
+  }
+  .paragraph{
+    margin-right: -10rem;
+    margin-top: -15rem;
+    font-size: 20px;
+  }
+  .job_explore{
+    margin-left: 12rem;
+    margin-right: -3rem;
+  }
+  .add_sem{
+    margin-top: 10rem;
+  }
+  
+}
+@media only screen and (max-width: 767px){
+  .grid{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .table-container{
+    margin: auto;
+    padding: 0.5px;
+    width: 70%;
+  }
 }
