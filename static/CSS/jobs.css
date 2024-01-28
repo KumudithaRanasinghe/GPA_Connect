@@ -18,8 +18,15 @@ margin-left: 15px;
     font-size: medium;
     font-family: Poppins, sans-serif;
     font-weight: 700;
+    text-align: center;  
+}
+.dis-head{
+    margin-top: 40px;
+    font-size: small;
+    font-family: Poppins, sans-serif;
+    font-weight: 400;
+    font-style: italic;
     text-align: center;
-    
 }
 
 .row-dev{
@@ -40,10 +47,10 @@ margin-left: 15px;
 .main-description{
     font-size: medium;
     color: black;
-
     background-color: #f0f8ff;
     border-radius: 10px;
     margin: 10px;
+    margin-bottom: 30px;
     padding: 15px;
     box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.2);
 }
