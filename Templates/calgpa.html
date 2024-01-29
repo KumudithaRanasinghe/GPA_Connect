@@ -450,14 +450,15 @@ function checkItemAvailability(itemId) { //check rows availability. prevent from
 
                 var gpa = document.getElementById('finalGpa').innerText;
                 if(gpa>0.1){
-                    window.location.href = '/jobs?id={{ degree[0][0] }}&gpa='+gpa;
 
-                }
-                else{
+                    window.location.href = '/jobs?id={{ degree[0][0] }}&gpa='+gpa;      
+
+                }else{
                     alert("minimum GPA value is 0.2");
                 }
                 
         }
+  
     //     function findJob() {
     //         var isLoggedIn = checkUserLoggedIn(); // Assuming you have a function to check user login status
 
