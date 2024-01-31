@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2024 at 06:51 AM
+-- Generation Time: Jan 31, 2024 at 09:20 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -289,7 +289,7 @@ INSERT INTO `module` (`m_id`, `m_name`, `m_credits`) VALUES
 (1, 'Introduction to Computer Science', 3),
 (2, 'Mathematics for Computing', 3),
 (3, 'Programming in C', 3),
-(4, 'Professional Development', 3),
+(4, 'Professional Development', 2),
 (5, 'Data communications and networks', 3),
 (6, 'Object Oriented Programming with Java', 3),
 (7, 'Algorithms and Data Structures', 3),
@@ -388,6 +388,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`u_id`, `u_name`, `name`, `email`, `gpa`, `d_id`, `user_type`, `u_password`) VALUES
+(28126, 'mjmadikari', 'Adikari A M J M', 'jayaniadikari19@gmail.com', 0, 0, 'student', 'pbkdf2:sha256:600000$MESHU3vk$59c8dba8d3f044bc61f3c1bddf432588241ae137fe1a54817464804f8ce89ad2'),
 (28230, 'Saman12', 'saman kumara', 'saman123@gmail.com', 0, 0, 'student', 'pbkdf2:sha256:600000$wfukpEIu$9aeff93714e0d6650216d3466cf4c8e4907597dce4c89165ed23caf73ca827c1'),
 (28232, 'dushan6693', 'dushan', 'saman123@gmail.com', 0, 0, 'student', 'pbkdf2:sha256:600000$vjkgGV84$b9b96b76f3ed71da175551ce9269113c619f196cb39629d1a9a1e5a2c7e41dcf'),
 (28236, 'admin', '', 'admin123@nsbm.lk', 0, 0, 'admin', 'pbkdf2:sha256:600000$I1bfiXWr$e78c975b869433d8e93f624f598c6fa3ca0c12e354dd3c2511c438123531c820');
